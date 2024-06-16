@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Device;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $devices = ['Light','Fan','AC','Lamp'];
+        foreach($devices as $device) {
+            Device::create(['name' => $device]);
+        }
         /* role permission users */
         $this->call(UsersTableSeeder::class);
         $this->call(RolesTableSeeder::class);

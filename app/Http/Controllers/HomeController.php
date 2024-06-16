@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Http\Request;
 use PhpMqtt\Client\Facades\MQTT;
 
@@ -28,6 +29,7 @@ class HomeController extends Controller
         $mqtt = MQTT::connection();
         // MQTT::publish('lakum/home/fan', 'on');
         // dd(auth()->user()->isEditor());
-        return view('home');
+        $devices = Device::all();
+        return view('home',compact('devices'));
     }
 }

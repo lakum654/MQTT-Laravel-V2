@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.5",
+        "livewire/livewire": "*",
         "php-mqtt/client": "^2.1",
         "php-mqtt/laravel-client": "^1.5"
     },
