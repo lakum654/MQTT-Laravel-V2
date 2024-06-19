@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $mqtt = MQTT::connection();
+        // $mqtt = MQTT::connection();
         // MQTT::publish('lakum/home/fan', 'on');
         // dd(auth()->user()->isEditor());
         $devices = Device::all();
