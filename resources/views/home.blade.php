@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card corona-gradient-card">
                     <div class="card-body py-0 px-0 px-sm-3">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h6 class="text-muted font-weight-normal">Potential growth</h6>
+                        <h6 class="text-muted font-weight-normal">Total growth</h6>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-      <a class="sidebar-brand brand-logo" href="index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo" /></a>
-      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo-mini.svg')}}" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo" href="{{ route('home')}}"><img src="{{ asset('images/logo-mini.png') }}" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo-mini.png')}}" alt="logo" /></a>
     </div>
     <ul class="nav">
       <li class="nav-item profile">
@@ -12,8 +12,8 @@
               <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
-              <h5 class="mb-0 font-weight-normal">Henry Kleinsss</h5>
-              <span>Gold Member</span>
+              <h5 class="mb-0 font-weight-normal">SRI VAS</h5>
+              <span>Maneger</span>
             </div>
           </div>
           <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -57,7 +57,7 @@
         <span class="nav-link">Navigation</span>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('home')}}">
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>
