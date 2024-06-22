@@ -26,22 +26,13 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'Admin',
                 'email'    => 'admin@gmail.com',
                 'password' => bcrypt('password'),
+                'role_id'  => 1
             ]);
 
             $newUser->attachRole($adminRole);
             foreach ($permissions as $permission) {
                 $newUser->attachPermission($permission);
             }
-        }
-
-        if (config('roles.models.defaultUser')::where('email', '=', 'user@user.com')->first() === null) {
-            $newUser = config('roles.models.defaultUser')::create([
-                'name'     => 'User',
-                'email'    => 'user@user.com',
-                'password' => bcrypt('password'),
-            ]);
-
-            $newUser->attachRole($userRole);
         }
     }
 }

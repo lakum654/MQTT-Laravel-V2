@@ -42,6 +42,30 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Can delete users',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Can Create Device',
+                'slug'        => 'create.device',
+                'description' => 'Can Create Device',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Edit Device',
+                'slug'        => 'edit.device',
+                'description' => 'Can Edit Device',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can  Delete Device',
+                'slug'        => 'delete.device',
+                'description' => 'Can Delete Device',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can View Device',
+                'slug'        => 'view.device',
+                'description' => 'Can View Device',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

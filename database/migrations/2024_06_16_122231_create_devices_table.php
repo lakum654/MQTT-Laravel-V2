@@ -17,6 +17,8 @@ return new class extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('qrcode')->nullable();
+            $table->bigInteger('created_by');
             $table->timestamps();
         });
     }

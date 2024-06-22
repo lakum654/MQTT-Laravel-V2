@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
       <a class="sidebar-brand brand-logo" href="{{ route('home')}}"><img src="{{ asset('images/logo-mini.png') }}" alt="logo" /></a>
-      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo-mini.png')}}" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo-mini" href="{{route('home')}}"><img src="{{ asset('images/logo-mini.png')}}" alt="logo" /></a>
     </div>
     <ul class="nav">
       <li class="nav-item profile">
@@ -12,8 +12,8 @@
               <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
-              <h5 class="mb-0 font-weight-normal">SRI VAS</h5>
-              <span>Maneger</span>
+              <h5 class="mb-0 font-weight-normal">{{auth()->user()->name}}</h5>
+              <span>{{auth()->user()?->role?->name}}</span>
             </div>
           </div>
           <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -64,7 +64,25 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
+
       <li class="nav-item menu-items">
+        <a class="nav-link" href="{{ route('users.index')}}">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-multiple-outline"></i>
+          </span>
+          <span class="menu-title">Users</span>
+        </a>
+      </li>
+
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="{{ route('device.index')}}">
+          <span class="menu-icon">
+            <i class="mdi mdi-disqus-outline"></i>
+          </span>
+          <span class="menu-title">Devices</span>
+        </a>
+      </li>
+      {{-- <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-icon">
             <i class="mdi mdi-laptop"></i>
@@ -79,8 +97,8 @@
             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item menu-items">
+      </li> --}}
+      {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="pages/forms/basic_elements.html">
           <span class="menu-icon">
             <i class="mdi mdi-playlist-play"></i>
@@ -137,6 +155,6 @@
           </span>
           <span class="menu-title">Documentation</span>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </nav>

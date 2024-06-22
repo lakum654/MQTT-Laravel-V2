@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('users/data', [UserController::class,'getData'])->name('users.data')->middleware('auth');
+Route::resource('users', UserController::class);
+
+
+Route::get('devices/data', [DeviceController::class,'getData'])->name('device.data')->middleware('auth');
+Route::resource('device', DeviceController::class);

@@ -5,11 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'NighaTech Global Pvt Ltd') }}</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
@@ -18,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/owl-carousel-2/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/owl-carousel-2/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -27,6 +30,11 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 
     @livewireStyles
+
+    @stack('CSS')
+
+    <style>
+    </style>
 </head>
 
 <body>
@@ -112,26 +120,38 @@
 
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ 'vendors/js/vendor.bundle.base.js' }}"></script>
+    <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="{{ 'vendors/chart.js/Chart.min.js' }}"></script>
-    <script src="{{ 'vendors/progressbar.js/progressbar.min.js' }}"></script>
-    <script src="{{ 'vendors/jvectormap/jquery-jvectormap.min.js' }}"></script>
-    <script src="{{ 'vendors/jvectormap/jquery-jvectormap-world-mill-en.js' }}"></script>
-    <script src="{{ 'vendors/owl-carousel-2/owl.carousel.min.js' }}"></script>
+    <script src="{{ asset('vendors/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}"></script>
+    <script src="{{ asset('vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+    <script src="{{ asset('vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{ 'js/off-canvas.js' }}"></script>
-    <script src="{{ 'js/hoverable-collapse.js' }}"></script>
-    <script src="{{ 'js/misc.js' }}"></script>
-    <script src="{{ 'js/settings.js' }}"></script>
-    <script src="{{ 'js/todolist.js' }}"></script>
+    <script src="{{ asset('js/off-canvas.js') }}"></script>
+    <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('js/misc.js') }}"></script>
+    <script src="{{ asset('js/settings.js') }}"></script>
+    <script src="{{ asset('js/todolist.js') }}"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{ 'js/dashboard.js' }}"></script>
     <!-- End custom js for this page -->
+
     @stack('JS')
+    <script>
+        $(document).ready(function() {
+            $(".select2").select2({});
+            $("input[type=search]").addClass('form-control form-control-sm');
+            // $("input[type=search]").setAttribute('placeholder','Search...');
+        });
+    </script>
 </body>
 
 </html>
