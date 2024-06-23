@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\ReliverController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::resource('users', UserController::class);
 
 Route::get('devices/data', [DeviceController::class,'getData'])->name('device.data')->middleware('auth');
 Route::resource('device', DeviceController::class);
+
+Route::get('reliver/data', [ReliverController::class,'getData'])->name('reliver.data')->middleware('auth');
+Route::resource('reliver', ReliverController::class);

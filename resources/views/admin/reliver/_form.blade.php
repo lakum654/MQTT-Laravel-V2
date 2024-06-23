@@ -13,8 +13,9 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="junctionHouseNo">Junction House No</label>
-                                <input type="text" class="form-control" id="junctionHouseNo" placeholder="Junction House No"
-                                    name="junction_house_no" value="{{ old('junction_house_no', $reliver->junction_house_no) }}">
+                                <input type="text" class="form-control" id="junctionHouseNo"
+                                    placeholder="Junction House No" name="junction_house_no"
+                                    value="{{ old('junction_house_no', $reliver->junction_house_no) }}">
                                 @error('junction_house_no')
                                     <label class="error text-danger">{{ $message }}</label>
                                 @enderror
@@ -22,8 +23,9 @@
 
                             <div class="form-group">
                                 <label for="airBlasterCount">Air Blaster Count</label>
-                                <input type="text" class="form-control" id="airBlasterCount" placeholder="Air Blaster Count"
-                                    name="air_blaster_count" value="{{ old('air_blaster_count', $reliver->air_blaster_count) }}">
+                                <input type="text" class="form-control" id="airBlasterCount"
+                                    placeholder="Air Blaster Count" name="air_blaster_count"
+                                    value="{{ old('air_blaster_count', $reliver->air_blaster_count) }}">
                                 @error('air_blaster_count')
                                     <label class="error text-danger">{{ $message }}</label>
                                 @enderror
