@@ -26,7 +26,7 @@ class ReliverController extends Controller
 
     public function getData()
     {
-        $relivers = Reliver::query();
+        $relivers = Reliver::with('device');
 
         return DataTables::eloquent($relivers)
             ->addColumn('action', function($reliver) {
@@ -41,8 +41,9 @@ class ReliverController extends Controller
             ->make(true);
     }
 
-    public function create()
+    public function create($device_id)
     {
+        $this->data['device_id'] = $device_id;
         return view($this->data['view'] . 'form', $this->data);
     }
 
@@ -52,6 +53,7 @@ class ReliverController extends Controller
             'junction_house_no' => 'required|string|max:255',
             'air_blaster_count' => 'required|string|max:255',
             'compressor' => 'required|string|max:255',
+            'device_id' => 'required'
         ];
 
         $messages = [
@@ -66,7 +68,10 @@ class ReliverController extends Controller
             'junction_house_no' => $validatedData['junction_house_no'],
             'air_blaster_count' => $validatedData['air_blaster_count'],
             'compressor' => $validatedData['compressor'],
-            'qrcode' => str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT)
+            'qrcode' => str_pad(rand(0, 999999), 16, '0', STR_PAD_LEFT),
+            'device_id' => $request->device_id,
+            'map' => $request->map,
+            'created_by' => auth()->user()->id
         ]);
 
         return redirect(route($this->data['routeName']))->with('success', 'Reliver created successfully.');
@@ -100,6 +105,7 @@ class ReliverController extends Controller
             'junction_house_no' => $validatedData['junction_house_no'],
             'air_blaster_count' => $validatedData['air_blaster_count'],
             'compressor' => $validatedData['compressor'],
+            'map' => $request->map
         ]);
 
         return redirect(route($this->data['routeName']))->with('message', 'Reliver updated successfully!');

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ConnectRelationshipsSeeder extends Seeder
@@ -22,8 +23,11 @@ class ConnectRelationshipsSeeder extends Seeder
          * Attach Permissions to Roles.
          */
         $roleAdmin = config('roles.models.role')::where('name', '=', 'Super Admin')->first();
+        $admin = User::where('role_id',1)->first();
         foreach ($permissions as $permission) {
             $roleAdmin->attachPermission($permission);
+            $admin->attachPermission($permission);
+            $admin->roles()->sync([$roleAdmin->id]);
         }
     }
 }

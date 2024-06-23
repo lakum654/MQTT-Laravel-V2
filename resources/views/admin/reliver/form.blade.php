@@ -10,6 +10,7 @@
                         {{-- <p class="card-description"> Basic form layout </p> --}}
                         <form class="forms-sample" method="POST" action="{{ route('reliver.store') }}">
                             @csrf
+                            <input type="hidden" name="device_id" value="{{$device_id}}">
                             <div class="form-group">
                                 <label for="junction_house_no">Junction House No</label>
                                 <input type="text" class="form-control" id="junction_house_no" placeholder="Junction House No"
@@ -37,11 +38,20 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="qrcode">QRCode</label>
                                 <input type="text" class="form-control" id="qrcode" placeholder="QR Code"
                                     name="qrcode" value="{{ old('qrcode') }}">
                                 @error('qrcode')
+                                    <label class="error text-danger">{{ $message }}</label>
+                                @enderror
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="qrcode">Map</label>
+                                <input type="text" class="form-control" id="map" placeholder="Map"
+                                    name="map" value="{{ old('map') }}">
+                                @error('map')
                                     <label class="error text-danger">{{ $message }}</label>
                                 @enderror
                             </div>

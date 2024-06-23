@@ -66,6 +66,30 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Can View Device',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Can Create Reliver',
+                'slug'        => 'create.reliver',
+                'description' => 'Can Create Reliver',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Edit Reliver',
+                'slug'        => 'edit.reliver',
+                'description' => 'Can Edit Reliver',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Delete Reliver',
+                'slug'        => 'delete.reliver',
+                'description' => 'Can Delete Reliver',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can View Reliver',
+                'slug'        => 'view.reliver',
+                'description' => 'Can View Reliver',
+                'model'       => 'Permission',
+            ]
         ];
 
         /*

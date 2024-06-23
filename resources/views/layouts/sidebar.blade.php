@@ -65,6 +65,11 @@
         </a>
       </li>
 
+      @php
+       $user = auth()->user();
+      @endphp
+
+    @if($user->hasRole(['super.admin','manegar']))
       <li class="nav-item menu-items">
         <a class="nav-link" href="{{ route('users.index')}}">
           <span class="menu-icon">
@@ -73,7 +78,9 @@
           <span class="menu-title">Users</span>
         </a>
       </li>
+      @endif
 
+      @if($user->hasRole(['super.admin']))
       <li class="nav-item menu-items">
         <a class="nav-link" href="{{ route('device.index')}}">
           <span class="menu-icon">
@@ -82,6 +89,7 @@
           <span class="menu-title">Devices</span>
         </a>
       </li>
+    @endif
 
       <li class="nav-item menu-items">
         <a class="nav-link" href="{{ route('reliver.index')}}">

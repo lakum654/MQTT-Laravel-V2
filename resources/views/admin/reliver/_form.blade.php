@@ -41,10 +41,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="qrcode">QRCode</label>
-                                <input type="text" class="form-control" id="qrcode" placeholder="QR Code"
-                                    name="qrcode" value="{{ old('qrcode', $reliver->qrcode) }}">
-                                @error('qrcode')
+                                <label for="qrcode">Map</label>
+                                <input type="text" class="form-control" id="map" placeholder="Map"
+                                    name="map" value="{{ old('map', $reliver->map) }}">
+                                @error('map')
                                     <label class="error text-danger">{{ $message }}</label>
                                 @enderror
                             </div>

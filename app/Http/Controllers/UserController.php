@@ -50,7 +50,7 @@ class UserController extends Controller
         })
 
         ->editColumn('created_by',function($row) {
-            return $row->name;
+            return $row->managers->first()?->name ?? '-';
         })
         ->rawColumns(['action'])
         ->addIndexColumn()

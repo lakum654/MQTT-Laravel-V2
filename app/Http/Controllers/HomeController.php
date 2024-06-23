@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\Reliver;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PhpMqtt\Client\Facades\MQTT;
 
@@ -29,7 +31,10 @@ class HomeController extends Controller
         // $mqtt = MQTT::connection();
         // MQTT::publish('lakum/home/fan', 'on');
         // dd(auth()->user()->isEditor());
-        $devices = Device::all();
-        return view('home',compact('devices'));
+        $data['totalEmp'] = User::where('role_id',3)->count();
+        $data['totalDevice'] = User::where('role_id',3)->count();
+        $data['totalRel'] = Reliver::count();
+        $data['devices'] = Device::all();
+        return view('home',$data);
     }
 }

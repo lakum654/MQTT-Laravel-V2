@@ -7,9 +7,9 @@
               <div class="card-body">
                 <h4 class="card-title float-left">{{ $moduleName }}</h4>
                 <div class="card-tools">
-                   <a href="{{ route('reliver.create') }}">
+                   {{-- <a href="{{ route('reliver.create') }}">
                      <button type="button" class="btn btn-outline-primary btn-fw float-right">Add New</button>
-                   </a>
+                   </a> --}}
                 </div>
                 <p class="card-description">
                 </p>
@@ -18,10 +18,13 @@
                     <thead>
                       <tr>
                         <th> # </th>
+                        <th> Device Name </th>
                         <th> Junction House No </th>
                         <th> Air Blaster Count </th>
                         <th> Compressor </th>
+                        @if(auth()->user()->isSuperAdmin())
                         <th> QR Code </th>
+                        @endif
                         <th> Action </th>
                       </tr>
                     </thead>
@@ -57,10 +60,13 @@
             },
             columns: [
                 { data: 'DT_RowIndex', orderable: false, searchable: false },
+                { data: 'device.name', name: 'device_id' },
                 { data: 'junction_house_no', name: 'junction_house_no' },
                 { data: 'air_blaster_count', name: 'air_blaster_count' },
                 { data: 'compressor', name: 'compressor' },
+                @if(auth()->user()->isSuperAdmin())
                 { data: 'qrcode', name: 'qrcode' },
+                @endif
                 { data: 'action', orderable: false, searchable: false },
             ],
         });

@@ -32,4 +32,5 @@ Route::get('devices/data', [DeviceController::class,'getData'])->name('device.da
 Route::resource('device', DeviceController::class);
 
 Route::get('reliver/data', [ReliverController::class,'getData'])->name('reliver.data')->middleware('auth');
+Route::get('device/reliver/{deviceid}', [ReliverController::class,'create'])->name('device.reliver.create');
 Route::resource('reliver', ReliverController::class);

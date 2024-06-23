@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $devices = ['Light','Fan','AC','Lamp'];
-        foreach($devices as $device) {
-            Device::create(['name' => $device]);
-        }
+        // $devices = ['Light','Fan','AC','Lamp'];
+        // foreach($devices as $device) {
+        //     Device::create(['name' => $device]);
+        // }
         /* role permission users */
         $this->call(UsersTableSeeder::class);
         $this->call(RolesTableSeeder::class);
