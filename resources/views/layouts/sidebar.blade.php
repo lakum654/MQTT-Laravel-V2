@@ -69,7 +69,7 @@
        $user = auth()->user();
       @endphp
 
-    @if($user->hasRole(['super.admin','manegar']))
+    @if($user->hasRole(['super.admin','manegar','employee']))
       <li class="nav-item menu-items">
         <a class="nav-link" href="{{ route('users.index')}}">
           <span class="menu-icon">
@@ -91,7 +91,7 @@
       </li>
     @endif
 
-      <li class="nav-item menu-items">
+    <li class="nav-item menu-items">
         <a class="nav-link" href="{{ route('reliver.index')}}">
           <span class="menu-icon">
             <i class="mdi mdi-discord"></i>

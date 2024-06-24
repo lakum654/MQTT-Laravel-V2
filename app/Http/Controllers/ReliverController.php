@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reliver;
+use App\Models\ReliverWork;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -31,9 +32,18 @@ class ReliverController extends Controller
         return DataTables::eloquent($relivers)
             ->addColumn('action', function($reliver) {
                 $editUrl = route('reliver.edit', encrypt($reliver->id));
+                $deleteUrl = route('reliver.delete', encrypt($reliver->id));
+                $viewUrl = route('reliver.show', encrypt($reliver->id));
                 $actions = '';
 
-                $actions .= "<a href='".$editUrl."' class='btn btn-warning btn-xs'><i class='fas fa-pencil-alt'></i> Edit</a>";
+                if(auth()->user()->hasRole(['super.admin','manegar'])) {
+                    $actions .= "<a href='".$editUrl."' class='btn btn-warning btn-xs'><i class='fas fa-pencil-alt'></i> Edit</a>";
+                }
+                if(auth()->user()->hasRole(['super.admin'])) {
+                    $actions .= "<a href='".$deleteUrl."' class='btn btn-danger btn-xs ml-1'><i class='fas fa-pencil-alt'></i> Delete</a>";
+                }
+                $actions .= "<a href='".$viewUrl."' class='btn btn-success btn-xs ml-1'><i class='fas fa-pencil-alt'></i> View</a>";
+
                 return $actions;
             })
             ->rawColumns(['action'])
@@ -79,7 +89,8 @@ class ReliverController extends Controller
 
     public function show($id)
     {
-        $this->edit($id);
+        $this->data['reliver_data'] = ReliverWork::where('reliver_id',decrypt($id))->get();
+        return view($this->data['view'].'view',$this->data);
     }
 
     public function edit($id)
@@ -113,7 +124,7 @@ class ReliverController extends Controller
 
     public function destroy($id)
     {
-        $reliver = Reliver::findOrFail($id);
+        $reliver = Reliver::findOrFail(decrypt($id));
         $reliver->delete();
 
         return redirect(route($this->data['routeName']))->with('message', 'Reliver deleted successfully!');

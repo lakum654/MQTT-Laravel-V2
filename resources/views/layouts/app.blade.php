@@ -12,6 +12,8 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link href="{{ asset('vendors/datatables-buttons/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
@@ -123,7 +125,17 @@
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.bootstrap4.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}"></script>
     <script src="{{ asset('vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>

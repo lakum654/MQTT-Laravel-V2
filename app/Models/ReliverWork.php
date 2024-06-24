@@ -9,4 +9,8 @@ class ReliverWork extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function reliver() {
+        return $this->belongsTo(Reliver::class);
+    }
 }

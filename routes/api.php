@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('store-reliver-data', [ApiController::class, 'storeReliverData']);
+Route::post('store-reliver-data/', [ApiController::class, 'storeReliverData']);
 Route::get('get-reliver-data/{reliver_id}', [ApiController::class, 'getReliverData']);

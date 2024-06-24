@@ -44,6 +44,13 @@
     $('.table').DataTable({
         processing: true,
         serverSide: true,
+        dom: 'lBfrtip',
+    	buttons: [
+        {
+            extend: 'csv',
+            text: 'Export'
+        },
+       ],
         ajax: {
         "url": "{{ route('device.data') }}",
         "dataType": "json",

@@ -33,8 +33,10 @@ class HomeController extends Controller
         // dd(auth()->user()->isEditor());
         $data['totalEmp'] = User::where('role_id',3)->count();
         $data['totalDevice'] = User::where('role_id',3)->count();
-        $data['totalRel'] = Reliver::count();
         $data['devices'] = Device::all();
+        $data['totalRel'] = Reliver::count();
+        $data['totalUsers'] = User::count();
+
         return view('home',$data);
     }
 }

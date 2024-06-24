@@ -45,7 +45,9 @@ class UserController extends Controller
 
             // if (auth()->user()->hasPermission('edit.users')) {
             // }
-            $actions .= "<a href='".$editUrl."' class='btn btn-warning  btn-xs'><i class='fas fa-pencil-alt'></i> Edit</a>";
+            if(auth()->user()->hasRole(['super.admin','manegar'])) {
+                $actions .= "<a href='".$editUrl."' class='btn btn-warning  btn-xs'><i class='fas fa-pencil-alt'></i> Edit</a>";
+            }
             return $actions;
         })
 

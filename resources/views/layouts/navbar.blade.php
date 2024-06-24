@@ -14,7 +14,7 @@
         </li>
       </ul>
       <ul class="navbar-nav navbar-nav-right">
-        @if(auth()->user()->isManegar() || true)
+        @if(auth()->user()->isManegar())
         <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ route('device.create')}}">+ Add New</a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
@@ -22,7 +22,7 @@
               <div class="dropdown-divider"></div>
               <div class="dropdown-divider"></div>
               @foreach (App\Models\Device::all() as $device)
-                      <a class="dropdown-item preview-item" href="{{ route('device.reliver.create',$device->id)}}">
+                      <a class="dropdown-item preview-item" @if($device->name == 'Reliver') href="{{ route('device.reliver.create',$device->id)}}"" @else href="#" @endif>
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-dark rounded-circle">
                     <i class="mdi mdi-disqus-outline text-info"></i>
