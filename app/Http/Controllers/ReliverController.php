@@ -78,7 +78,7 @@ class ReliverController extends Controller
             'junction_house_no' => $validatedData['junction_house_no'],
             'air_blaster_count' => $validatedData['air_blaster_count'],
             'compressor' => $validatedData['compressor'],
-            'qrcode' => str_pad(rand(0, 999999), 16, '0', STR_PAD_LEFT),
+            'qrcode' => str_pad(rand(0, 9999999999999999), 16, '0', STR_PAD_LEFT),
             'device_id' => $request->device_id,
             'map' => $request->map,
             'created_by' => auth()->user()->id
@@ -90,7 +90,17 @@ class ReliverController extends Controller
     public function show($id)
     {
         $this->data['reliver_data'] = ReliverWork::where('reliver_id',decrypt($id))->get();
+        $this->data['reliver'] = Reliver::find(decrypt($id));
+        // dd($this->data);
         return view($this->data['view'].'view',$this->data);
+    }
+
+    public function getReliverApiData($id) {
+        // dd($id);
+        $data = ReliverWork::with('reliver')->where('reliver_id',$id);
+        return DataTables::eloquent($data)
+            ->addIndexColumn()
+            ->make(true);
     }
 
     public function edit($id)

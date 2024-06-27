@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\MqttController;
 use App\Http\Controllers\ReliverController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,9 @@ Route::resource('device', DeviceController::class);
 
 Route::get('reliver/delete/{id}', [ReliverController::class,'destroy'])->name('reliver.delete')->middleware('auth');
 Route::get('reliver/data', [ReliverController::class,'getData'])->name('reliver.data')->middleware('auth');
+Route::get('reliver_works/{reliver_id}', [ReliverController::class,'getReliverApiData'])->name('reliver.apiData');
 Route::get('device/reliver/{deviceid}', [ReliverController::class,'create'])->name('device.reliver.create');
 Route::resource('reliver', ReliverController::class);
+
+
+Route::get('mqtt',[MqttController::class,'index']);

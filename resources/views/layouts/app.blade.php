@@ -122,11 +122,12 @@
 
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{ asset('vendors/datatables-buttons/js/buttons.bootstrap4.js') }}"></script>
-    <script src="{{ asset('vendors/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendors/datatables-buttons/js/buttons.html5.min.js') }}"></script> --}}
     <script src="{{ asset('vendors/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
@@ -145,6 +146,7 @@
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <!-- End plugin js for this page -->
     <!-- inject:js -->
+    {{-- <script src="{{ asset('js/chart.js')}}"></script> --}}
     <script src="{{ asset('js/off-canvas.js') }}"></script>
     <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('js/misc.js') }}"></script>

@@ -50,23 +50,24 @@ class ApiController extends Controller
     // }
 
     public function storeReliverData(Request $request) {
-        try {
+        // try {
             // Display all incoming request data for debugging
             // dd($request->all());
 
             // Define validation rules
-            $request->validate([
-                'qrcode' => 'required|string|exists:relivers,qrcode',
-            ]);
+            // $request->validate([
+            //     'qrcode' => 'required|string|exists:relivers,qrcode',
+            // ]);
 
             // Retrieve the Reliver using the QR code
-            $reliver = Reliver::where('qrcode', $request->qrcode)->firstOrFail();
             // dd($reliver);
             // Parse the incoming data string
             // Example data: 'sssssssssssss?data=234523452345i82/rader1/radar2/rader3/radar4/sadfsad/sdfsdf/sdf/sdf/sdfsdf'
             $dataString = $request->data;
             $dataParts = explode('/', $dataString);
-            unset($dataParts[0]);
+            // dd($dataParts);
+            $reliver = Reliver::where('qrcode', $dataParts[0])->firstOrFail();
+            // unset($dataParts[0]);
             // Assuming the data parts are in the correct order
             $reliverWorkData = [
                 'reliver_id' => $reliver->id,
@@ -98,19 +99,21 @@ class ApiController extends Controller
                 'message' => 'Reliver data saved successfully',
                 'data' => $reliverWork,
             ], 201);
-        } catch (ValidationException $e) {
-            // Return a validation error response
-            return response()->json([
-                'message' => 'Validation error',
-                'errors' => $e->errors(),
-            ], 422);
-        } catch (\Exception $e) {
-            // Handle other exceptions if needed
-            return response()->json([
-                'message' => 'An error occurred',
-                'error' => $e->getMessage(),
-            ], 500);
-        }
+        // } catch (ValidationException $e) {
+        //     dd($e);
+        //     // Return a validation error response
+        //     return response()->json([
+        //         'message' => 'Validation error',
+        //         'errors' => $e->errors(),
+        //     ], 422);
+        // } catch (\Exception $e) {
+        //     dd($e->getMessage());
+        //     // Handle other exceptions if needed
+        //     return response()->json([
+        //         'message' => 'An error occurred',
+        //         'error' => $e->getMessage(),
+        //     ], 500);
+        // }
     }
 
 

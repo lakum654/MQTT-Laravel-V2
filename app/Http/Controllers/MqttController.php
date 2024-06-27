@@ -1,11 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Http\Request;
 use PhpMqtt\Client\Facades\MQTT;
 
 class MqttController extends Controller
 {
+    public function index() {
+        $devices = Device::all();
+        return view('mqtt',compact('devices'));
+    }
     public function publish()
     {
         echo "Starting....";

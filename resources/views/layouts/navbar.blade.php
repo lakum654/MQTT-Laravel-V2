@@ -64,7 +64,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
               <div class="preview-thumbnail">
-                <img src="assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                <img src="#" alt="image" class="rounded-circle profile-pic">
               </div>
               <div class="preview-item-content">
                 <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
@@ -74,7 +74,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
               <div class="preview-thumbnail">
-                <img src="assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+                <img src="#" alt="image" class="rounded-circle profile-pic">
               </div>
               <div class="preview-item-content">
                 <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
@@ -84,7 +84,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
               <div class="preview-thumbnail">
-                <img src="assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
+                <img src="{{ asset('images/faces/face3.jpg') }}" alt="image" class="rounded-circle profile-pic">
               </div>
               <div class="preview-item-content">
                 <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
