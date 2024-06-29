@@ -137,7 +137,7 @@
     <script src="{{ asset('vendors/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script> --}}
     <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}"></script>
     <script src="{{ asset('vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
     <script src="{{ asset('vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
@@ -155,7 +155,7 @@
 
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="{{ 'js/dashboard.js' }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
 
     @stack('JS')
