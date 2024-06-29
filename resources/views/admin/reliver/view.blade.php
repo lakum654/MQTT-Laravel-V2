@@ -143,14 +143,7 @@
                 }]
             });
 
-            // $('#gauge-range').on('input', function () {
-            //     g1.refresh($(this).val());
-            //     g2.refresh($(this).val());
-            // });
 
-            // Initialize gauges
-            // g1.refresh(10);
-            // g2.refresh(30);
         const clientId = 'emqx_clouded8ad6';
         const host = `wss://za0641be.ala.eu-central-1.emqxsl.com:8084/mqtt`;
         const options = {
