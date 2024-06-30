@@ -24,8 +24,9 @@
         input[type="range"] {
             width: 50%;
         }
-         /* Adjust the size of the canvas using CSS */
-         #myChartContainer {
+
+        /* Adjust the size of the canvas using CSS */
+        #myChartContainer {
             width: 500px;
             height: 300px;
         }
@@ -169,12 +170,12 @@
                 }]
             });
 
-            const clientId = `{{env('MQTT_CLIENT_ID')}}`;
-            const host = `wss://{{env('MQTT_HOST')}}:{{env('MQTT_PORT')}}/mqtt`;
+            const clientId = `{{ env('MQTT_CLIENT_ID') }}`;
+            const host = `wss://{{ env('MQTT_HOST') }}:{{ env('MQTT_PORT') }}/mqtt`;
             const options = {
                 clientId: clientId,
-                username: `{{env('MQTT_AUTH_USERNAME')}}`,
-                password: `{{env('MQTT_AUTH_PASSWORD')}}`,
+                username: `{{ env('MQTT_AUTH_USERNAME') }}`,
+                password: `{{ env('MQTT_AUTH_PASSWORD') }}`,
                 keepalive: 60,
                 protocolId: 'MQTT',
                 protocolVersion: 4,
@@ -256,71 +257,69 @@
 
             const ctx = $('#myChart')[0].getContext('2d');
 
-        // Create gradient for the first dataset
-        const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
-        gradient1.addColorStop(0, 'rgba(255, 99, 132, 0.2)');
-        gradient1.addColorStop(1, 'rgba(255, 99, 132, 0)');
+            // Create gradient for the first dataset
+            const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient1.addColorStop(0, 'rgba(255, 99, 132, 0.2)');
+            gradient1.addColorStop(1, 'rgba(255, 99, 132, 0)');
 
-        // Create gradient for the second dataset
-        const gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
-        gradient2.addColorStop(0, 'rgba(75, 192, 192, 0.2)');
-        gradient2.addColorStop(1, 'rgba(75, 192, 192, 0)');
+            // Create gradient for the second dataset
+            const gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient2.addColorStop(0, 'rgba(75, 192, 192, 0.2)');
+            gradient2.addColorStop(1, 'rgba(75, 192, 192, 0)');
 
-        // Generate labels for one hour intervals
-        const labels = [];
-        for (let i = 1; i <= 12; i++) {
-            labels.push(`${i} hour`);
-        }
-
-
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Radar 1',
-                        data: [],
-                        backgroundColor: gradient1,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1,
-                        fill: true,
-                        tension: 0.4, // This makes the line rounded
-                    },
-                    {
-                        label: 'Radar 2',
-                        data: [],
-                        backgroundColor: gradient2,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1,
-                        fill: true,
-                        tension: 0.4, // This makes the line rounded
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+            // Generate labels for one hour intervals
+            const labels = [];
+            for (let i = 1; i <= 12; i++) {
+                labels.push(`${i} hour`);
             }
-        });
 
-        function updateChartData(topic, value) {
-            if (topic === '{{$reliver->qrcode}}/Radar1') {
-                myChart.data.datasets[0].data.push(value);
-                if (myChart.data.datasets[0].data.length > labels.length) {
-                    myChart.data.datasets[0].data.shift();
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                            label: 'Radar 1',
+                            data: [],
+                            backgroundColor: gradient1,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            fill: true,
+                            tension: 0.4, // This makes the line rounded
+                        },
+                        {
+                            label: 'Radar 2',
+                            data: [],
+                            backgroundColor: gradient2,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            fill: true,
+                            tension: 0.4, // This makes the line rounded
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            } else if (topic === '{{$reliver->qrcode}}/Radar2') {
-                myChart.data.datasets[1].data.push(value);
-                if (myChart.data.datasets[1].data.length > labels.length) {
-                    myChart.data.datasets[1].data.shift();
+            });
+
+            function updateChartData(topic, value) {
+                if (topic === '{{ $reliver->qrcode }}/Radar1') {
+                    myChart.data.datasets[0].data.push(value);
+                    if (myChart.data.datasets[0].data.length > labels.length) {
+                        myChart.data.datasets[0].data.shift();
+                    }
+                } else if (topic === '{{ $reliver->qrcode }}/Radar2') {
+                    myChart.data.datasets[1].data.push(value);
+                    if (myChart.data.datasets[1].data.length > labels.length) {
+                        myChart.data.datasets[1].data.shift();
+                    }
                 }
+                myChart.update();
             }
-            myChart.update();
-        }
         });
     </script>
 
