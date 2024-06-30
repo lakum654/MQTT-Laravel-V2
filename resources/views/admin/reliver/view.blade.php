@@ -40,10 +40,6 @@
 @section('content')
     <div class="content-wrapper">
         <div class="col-lg-12 grid-margin stretch-card">
-            @include('admin.reliver.mqttData')
-        </div>
-
-        <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Pressure Live </h4>
@@ -66,13 +62,23 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Bar Chart Live </h4>
+                    <h4 class="card-title">Radar Live </h4>
                     <div id="myChartContainer">
                         <canvas id="myChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            @include('admin.reliver.mqttData')
+        </div>
+
+
+
+
+
+
         <br>
         {{-- <div class="col-lg-12 grid-margin stretch-card">
             <div class="row">
@@ -269,8 +275,8 @@
 
             // Generate labels for one hour intervals
             const labels = [];
-            for (let i = 1; i <= 12; i++) {
-                labels.push(`${i} hour`);
+            for (let i = 1; i <= 60; i++) {
+                labels.push(`${i} seconds`);
             }
 
             const myChart = new Chart(ctx, {

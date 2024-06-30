@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title float-left">MQTT Data</h4>
+        <h4 class="card-title float-left">Live Data</h4>
         <div class="card-tools">
             {{-- <a href="{{ route('reliver.create') }}">
              <button type="button" class="btn btn-outline-primary btn-fw float-right">Add New</button>
@@ -45,12 +45,12 @@
                 </thead>
                 <tbody class="mqttBody">
                     <tr>
-                        <td id="Radar1" data-topic="{{ $reliver->qrcode }}/Radar1"></td>
-                        <td id="Radar2" data-topic="{{ $reliver->qrcode }}/Radar2"></td>
-                        <td id="BlasterA1" data-topic="{{ $reliver->qrcode }}/BlasterA1"></td>
-                        <td id="BlasterB1" data-topic="{{ $reliver->qrcode }}/BlasterB1"></td>
-                        <td id="BlasterC1" data-topic="{{ $reliver->qrcode }}/BlasterC1"></td>
-                        <td id="BlasterD1" data-topic="{{ $reliver->qrcode }}/BlasterD1"></td>
+                        <td id="Radar1" data-topic="{{ $reliver->qrcode }}/Radar1">0</td>
+                        <td id="Radar2" data-topic="{{ $reliver->qrcode }}/Radar2">0</td>
+                        <td id="BlasterA1" data-topic="{{ $reliver->qrcode }}/BlasterA1">0</td>
+                        <td id="BlasterB1" data-topic="{{ $reliver->qrcode }}/BlasterB1">0</td>
+                        <td id="BlasterC1" data-topic="{{ $reliver->qrcode }}/BlasterC1">0</td>
+                        <td id="BlasterD1" data-topic="{{ $reliver->qrcode }}/BlasterD1">0</td>
                         <td id="Pressure1" data-topic="{{ $reliver->qrcode }}/Pressure1">0</td>
                         <td id="Pressure2" data-topic="{{ $reliver->qrcode }}/Pressure2">0</td>
                         <td id="Pressure3" data-topic="{{ $reliver->qrcode }}/Pressure3">0</td>
