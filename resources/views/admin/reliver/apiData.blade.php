@@ -17,9 +17,7 @@
     <div class="card-body">
         <h4 class="card-title float-left">{{ $moduleName }} Works {{$reliver->qrcode}}</h4>
         <div class="card-tools">
-            {{-- <a href="{{ route('reliver.create') }}">
-             <button type="button" class="btn btn-outline-primary btn-fw float-right">Add New</button>
-           </a> --}}
+            <button type="button" class="btn btn-outline-primary btn-fw float-right" id="refreshBtn">Refresh</button>
         </div>
         <p class="card-description"></p>
 

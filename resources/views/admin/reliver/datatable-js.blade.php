@@ -1,8 +1,8 @@
 <script>
-    $('#datatable').DataTable({
+    let table = $('#datatable').DataTable({
         processing: true,
         serverSide: true,
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         buttons: [{
             extend: 'csv',
             text: 'Export'
@@ -99,4 +99,8 @@
             }
         ]
     });
+
+    $('#refreshBtn').click(function() {
+        table.draw();
+    })
 </script>
