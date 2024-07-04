@@ -1,14 +1,14 @@
 @extends('layouts.app')
-@section('CSS')
+@push('CSS')
     <style>
-        body {
+        /* body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
-        }
+        } */
 
         .gauge {
             width: 200px;
@@ -27,8 +27,8 @@
 
         /* Adjust the size of the canvas using CSS */
         #myChartContainer {
-            width: 500px;
-            height: 300px;
+            width: 100%;
+            height: 100%;
         }
 
         #myChart {
@@ -36,7 +36,7 @@
             height: 100%;
         }
     </style>
-@endsection
+@endpush
 @section('content')
     <div class="content-wrapper">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -44,14 +44,14 @@
                 <div class="card-body">
                     <h4 class="card-title">Pressure Live </h4>
                     <div class="row">
-                        <div class="col-md-4 d-flex justify-content-center">
+                        <div class="col-md-3 d-flex justify-content-center">
                             <div id="gauge1" class="gauge"></div>
                         </div>
-                        <div class="col-md-4 d-flex justify-content-center">
+                        <div class="col-md-3 d-flex justify-content-center">
                             <div id="gauge2" class="gauge"></div>
                         </div>
 
-                        <div class="col-md-4 d-flex justify-content-center">
+                        <div class="col-md-3 d-flex justify-content-center">
                             <div id="gauge3" class="gauge"></div>
                         </div>
                     </div>
@@ -73,23 +73,6 @@
         <div class="col-lg-12 grid-margin stretch-card">
             @include('admin.reliver.mqttData')
         </div>
-
-
-
-
-
-
-        <br>
-        {{-- <div class="col-lg-12 grid-margin stretch-card">
-            <div class="row">
-                <div class="col-md-6 d-flex justify-content-center">
-                    <div id="gauge1" class="gauge"></div>
-                </div>
-                <div class="col-md-6 d-flex justify-content-center">
-                    <div id="gauge2" class="gauge"></div>
-                </div>
-            </div>
-        </div> --}}
 
         <div class="col-lg-12 grid-margin stretch-card">
             @include('admin.reliver.apiData')
@@ -329,295 +312,5 @@
         });
     </script>
 
-    <script>
-        $('#datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            dom: 'Bfrtip',
-            buttons: [{
-                extend: 'csv',
-                text: 'Export'
-            }],
-            ajax: {
-                url: "{{ route('reliver.apiData', $reliver->id) }}",
-                dataType: "json",
-                type: "GET",
-            },
-            columns: [{
-                    data: 'DT_RowIndex',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'reliver_id',
-                    name: 'reliver_id'
-                },
-                {
-                    data: 'reliver.junction_house_no',
-                    name: 'reliver.junction_house_no'
-                },
-                {
-                    data: 'radar_1',
-                    name: 'radar_1'
-                },
-                {
-                    data: 'radar_2',
-                    name: 'radar_2'
-                },
-                {
-                    data: 'radar_3',
-                    name: 'radar_3'
-                },
-                {
-                    data: 'radar_4',
-                    name: 'radar_4'
-                },
-                {
-                    data: 'blaster_1',
-                    name: 'blaster_1'
-                },
-                {
-                    data: 'blaster_2',
-                    name: 'blaster_2'
-                },
-                {
-                    data: 'blaster_3',
-                    name: 'blaster_3'
-                },
-                {
-                    data: 'blaster_4',
-                    name: 'blaster_4'
-                },
-                {
-                    data: 'blaster_5',
-                    name: 'blaster_5'
-                },
-                {
-                    data: 'blaster_6',
-                    name: 'blaster_6'
-                },
-                {
-                    data: 'blaster_7',
-                    name: 'blaster_7'
-                },
-                {
-                    data: 'blaster_8',
-                    name: 'blaster_8'
-                },
-                {
-                    data: 'pressure_1',
-                    name: 'pressure_1'
-                },
-                {
-                    data: 'pressure_2',
-                    name: 'pressure_2'
-                },
-                {
-                    data: 'pressure_3',
-                    name: 'pressure_3'
-                },
-                {
-                    data: 'pressure_4',
-                    name: 'pressure_4'
-                },
-                {
-                    data: 'pressure_5',
-                    name: 'pressure_5'
-                },
-                {
-                    data: 'created_at',
-                    name: 'created_at'
-                }
-            ]
-        });
-    </script>
-
-    <script></script>
-
-
-    {{-- <script>
-        const clientId = 'emqx_clouded8ad6';
-        const host = 'wss://uaf2d772.ala.eu-central-1.emqxsl.com:8084/mqtt';
-        const options = {
-            clientId: clientId,
-            username: 'pavan',
-            password: 'pavan',
-            keepalive: 60,
-            protocolId: 'MQTT',
-            protocolVersion: 4,
-            clean: true,
-            reconnectPeriod: 1000,
-            connectTimeout: 30 * 1000,
-            will: {
-                topic: 'Book',
-                payload: 'Connection Closed abnormally..!',
-                qos: 0,
-                retain: false
-            },
-        };
-
-        console.log('Connecting mqtt client');
-        const client = mqtt.connect(host, options);
-
-        client.on('error', (err) => {
-            console.log('Connection error: ', err);
-            client.end();
-        });
-
-        client.on('reconnect', () => {
-            console.log('Reconnecting...');
-        });
-
-        client.on('connect', () => {
-            console.log('Connected to MQTT broker');
-            @foreach ($reliver_data as $value)
-                @for ($i = 1; $i <= 17; $i++)
-                    publish("{{ $value->reliver->qrcode }}/{{ $value->radar_1 }}",'Hello World');
-                @endfor
-            @endforeach
-        });
-
-        client.on('message', (topic, message) => {
-            console.log(`Received message: ${message.toString()} on topic: ${topic}`);
-            updateTable(topic, message.toString());
-        });
-
-        function publish(topic, message) {
-             subscribe(topic,message);
-            client.publish(topic, message, (err) => {
-                if (err) {
-                    console.log('Publish error: ', err);
-                } else {
-                    console.log(`Message: ${message} published to topic: ${topic}`);
-                }
-            });
-        }
-
-        function subscribe(topic) {
-            client.subscribe(topic, (err) => {
-                if (err) {
-                    console.log('Subscribe error: ', err);
-                } else {
-                    console.log(`Subscribed to topic: ${topic}`);
-                }
-            });
-        }
-
-        function updateTable(topic, message) {
-            const tbody = document.querySelector('#myMQTTTable tbody');
-            const values = message.split(',');
-
-            const newRow = document.createElement('tr');
-            for (const value of values) {
-                const newCell = document.createElement('td');
-                newCell.innerText = value;
-                newRow.appendChild(newCell);
-            }
-
-            const timestampCell = document.createElement('td');
-            timestampCell.innerText = new Date().toLocaleString();
-            newRow.appendChild(timestampCell);
-
-            tbody.appendChild(newRow);
-        }
-    </script> --}}
-
-    {{-- <script>
-        const clientId = 'emqx_cloud706ed8';
-        const host = 'wss://za0641be.ala.eu-central-1.emqxsl.com:8084/mqtt';
-        const options = {
-            clientId: clientId,
-            username: 'lakum',
-            password: 'lakum@mqtt',
-            keepalive: 60,
-            protocolId: 'MQTT',
-            protocolVersion: 4,
-            clean: true,
-            reconnectPeriod: 1000,
-            connectTimeout: 30 * 1000,
-            will: {
-                topic: 'Book',
-                payload: 'Connection Closed abnormally..!',
-                qos: 0,
-                retain: false
-            },
-        };
-
-        console.log('Connecting mqtt client');
-        const client = mqtt.connect(host, options);
-
-        client.on('error', (err) => {
-            console.log('Connection error: ', err);
-            client.end();
-        });
-
-        client.on('reconnect', () => {
-            console.log('Reconnecting...');
-        });
-
-        client.on('connect', () => {
-            console.log('Connected to MQTT broker');
-            @foreach ($reliver_data as $value)
-                @for ($i = 1; $i <= 17; $i++)
-                    publish("{{ $value->reliver->qrcode }}/{{ $value->radar_1 }}",'Hello,sssssssss');
-                @endfor
-            @endforeach
-        });
-
-        client.on('message', (topic, message) => {
-            console.log(`Received message: ${message.toString()} on topic: ${topic}`);
-            updateTable(topic, message.toString());
-        });
-
-        function publish(topic, message) {
-            subscribe(topic, message);
-            client.publish(topic, message, (err) => {
-                if (err) {
-                    console.log('Publish error: ', err);
-                } else {
-                    console.log(`Message: ${message} published to topic: ${topic}`);
-                }
-            });
-        }
-
-        function subscribe(topic) {
-            client.subscribe(topic, (err) => {
-                if (err) {
-                    console.log('Subscribe error: ', err);
-                } else {
-                    console.log(`Subscribed to topic: ${topic}`);
-                }
-            });
-        }
-
-        function updateTable(topic, message) {
-            const tbody = document.querySelector('#myMQTTTable tbody');
-            const values = message.split(',');
-            const headers = document.querySelectorAll('#mysMQTTTable thead th');
-
-            let existingRow = tbody.querySelector('tr:last-child');
-            if (!existingRow || existingRow.children.length >= headers.length) {
-                existingRow = document.createElement('tr');
-                tbody.appendChild(existingRow);
-            }
-
-            values.forEach((value, index) => {
-                const newCell = document.createElement('td');
-                newCell.innerText = value || ''; // Assign the value or leave empty if not provided
-                existingRow.appendChild(newCell);
-            });
-
-            if (existingRow.children.length < headers.length) {
-                for (let i = existingRow.children.length; i < headers.length; i++) {
-                    const emptyCell = document.createElement('td');
-                    emptyCell.innerText = ''; // Fill remaining cells with empty text
-                    existingRow.appendChild(emptyCell);
-                }
-            }
-
-            const timestampCell = document.createElement('td');
-            timestampCell.innerText = new Date().toLocaleString();
-            existingRow.appendChild(timestampCell);
-        }
-    </script> --}}
+    @include('admin.reliver.datatable-js')
 @endpush
