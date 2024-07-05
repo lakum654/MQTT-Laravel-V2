@@ -22,7 +22,7 @@
               <div class="dropdown-divider"></div>
               <div class="dropdown-divider"></div>
               @foreach (App\Models\Device::all() as $device)
-                      <a class="dropdown-item preview-item" @if($device->name == 'Reliver') href="{{ route('device.reliver.create',$device->id)}}"" @else href="#" @endif>
+                      <a class="dropdown-item preview-item"  href="{{ route('device.reliver.create',$device->id)}}">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-dark rounded-circle">
                     <i class="mdi mdi-disqus-outline text-info"></i>
