@@ -129,6 +129,7 @@ class ReliverController extends Controller
             'map' => $request->map
         ]);
 
+        $reliver->users()->sync($request->employee_ids);
         return redirect(route($this->data['routeName']))->with('message', 'Reliver updated successfully!');
     }
 

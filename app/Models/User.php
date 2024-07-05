@@ -69,8 +69,14 @@ class User extends Authenticatable
         return $query->where('role_id', 3);
     }
 
+    // For Emmployee & General Users
     public function employees()
     {
         return $this->belongsToMany(User::class, 'manager_employee', 'manager_id', 'user_id')->where('role_id', 3);
+    }
+
+    public function relivers()
+    {
+        return $this->belongsToMany(Reliver::class,'reliver_user','user_id','reliver_id');
     }
 }

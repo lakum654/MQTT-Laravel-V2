@@ -45,7 +45,7 @@
                 </div>
               </a> --}}
               <div class="dropdown-divider"></div>
-              <p class="p-3 mb-0 text-center">See all projects</p>
+              {{-- <p class="p-3 mb-0 text-center">See all projects</p> --}}
             </div>
           </li>
         @endif
@@ -54,7 +54,7 @@
             <i class="mdi mdi-view-grid"></i>
           </a>
         </li>
-        <li class="nav-item dropdown border-left">
+        {{-- <li class="nav-item dropdown border-left">
           <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
             <i class="mdi mdi-email"></i>
             <span class="count bg-success"></span>
@@ -94,7 +94,7 @@
             <div class="dropdown-divider"></div>
             <p class="p-3 mb-0 text-center">4 new messages</p>
           </div>
-        </li>
+        </li> --}}
         <li class="nav-item dropdown border-left">
           <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
             <i class="mdi mdi-bell"></i>
@@ -164,15 +164,15 @@
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
+            <a class="dropdown-item preview-item" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
                   <i class="mdi mdi-logout text-danger"></i>
                 </div>
               </div>
               <div class="preview-item-content">
-                <p class="preview-subject mb-1" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Log out</p>
+                <p class="preview-subject mb-1">Log out</p>
               </div>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

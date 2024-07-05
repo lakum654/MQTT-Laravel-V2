@@ -91,6 +91,7 @@
       </li>
     @endif
 
+    @if($user->hasRole(['super.admin','manegar']))
     <li class="nav-item menu-items">
         <a class="nav-link" href="{{ route('reliver.index')}}">
           <span class="menu-icon">
@@ -174,4 +175,5 @@
         </a>
       </li> --}}
     </ul>
+    @endif
   </nav>

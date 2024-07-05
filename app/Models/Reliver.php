@@ -13,4 +13,9 @@ class Reliver extends Model
     public function device() {
         return $this->belongsTo(Device::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'reliver_user','reliver_id','user_id');
+    }
 }

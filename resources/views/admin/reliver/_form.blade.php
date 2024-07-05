@@ -42,11 +42,35 @@
 
                             <div class="form-group">
                                 <label for="qrcode">Map</label>
-                                <input type="text" class="form-control" id="map" placeholder="Map"
-                                    name="map" value="{{ old('map', $reliver->map) }}">
+                                <input type="text" class="form-control" id="map" placeholder="Map" name="map"
+                                    value="{{ old('map', $reliver->map) }}">
                                 @error('map')
                                     <label class="error text-danger">{{ $message }}</label>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="employees">Select Employees</label>
+                                <div class="row">
+                                    @php
+                                        $chunkedEmployees = auth()->user()->employees->chunk(5);
+                                    @endphp
+                                    @foreach ($chunkedEmployees as $employeeChunk)
+                                        <div class="col-md-2">
+                                            @foreach ($employeeChunk as $employee)
+                                               @php
+                                                $assingedEmployeeIds = $reliver->users->pluck('id')->toArray();
+                                               @endphp
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" name="employee_ids[]" value="{{ $employee->id }}" id="employee{{ $employee->id }}" {{ in_array($employee->id, $assingedEmployeeIds) ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="employee{{ $employee->id }}">
+                                                        {{ $employee->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

@@ -432,7 +432,7 @@
             // Generate labels for one hour intervals
             const labels = [];
             for (let i = 1; i <= 60; i++) {
-                labels.push(`${i} seconds`);
+                labels.push(`${i} sec`);
             }
 
             const myChart = new Chart(ctx, {
