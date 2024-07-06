@@ -27,7 +27,14 @@ class ReliverController extends Controller
 
     public function getData()
     {
+
         $relivers = Reliver::with('device');
+        if(auth()->user()->hasRole(['manegar'])) {
+            $relivers = Reliver::with('device')->where('created_by',auth()->user()->id);
+        }else if(auth()->user()->hasRole(['employee','user'])) {
+            $userAssinedReliverIds = auth()->user()->relivers->pluck('id')->toArray();
+            $relivers = Reliver::with('device')->whereIn('id',$userAssinedReliverIds);
+        }
 
         return DataTables::eloquent($relivers)
             ->addColumn('action', function($reliver) {

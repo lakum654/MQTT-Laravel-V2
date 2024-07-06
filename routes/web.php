@@ -23,25 +23,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 // Route::group(['middleware' => ['role:super.admin,manager']], function () {
-    // ->middleware('role:superadmin,manager');
-    Route::get('users/data', [UserController::class,'getData'])->name('users.data')->middleware('auth');
-    Route::resource('users', UserController::class);
+// ->middleware('role:superadmin,manager');
+Route::get('users/data', [UserController::class, 'getData'])->name('users.data')->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth', 'role:super.admin,manager');
 
 
-    Route::get('devices/data', [DeviceController::class,'getData'])->name('device.data')->middleware('auth');
-    Route::resource('device', DeviceController::class)->middleware('role:superadmin,manager');
+Route::get('devices/data', [DeviceController::class, 'getData'])->name('device.data')->middleware('auth', 'role:super.admin,manager');
+Route::resource('device', DeviceController::class)->middleware('role:super.admin,manager', 'auth');
 
-    Route::get('reliver/delete/{id}', [ReliverController::class,'destroy'])->name('reliver.delete')->middleware('auth');
+Route::get('reliver/delete/{id}', [ReliverController::class, 'destroy'])->name('reliver.delete')->middleware('role:super.admin,manager', 'auth');
 
-    Route::get('mqtt',[MqttController::class,'index']);
-// });s
-Route::get('reliver/data', [ReliverController::class,'getData'])->name('reliver.data')->middleware('auth');
-Route::get('reliver_works/{reliver_id}', [ReliverController::class,'getReliverApiData'])->name('reliver.apiData');
-Route::get('device/reliver/{deviceid}', [ReliverController::class,'create'])->name('device.reliver.create');
-Route::resource('reliver', ReliverController::class);
-
-
-
+Route::get('mqtt', [MqttController::class, 'index'])->middleware('auth');
+Route::get('reliver/data', [ReliverController::class, 'getData'])->name('reliver.data')->middleware('role:super.admin,manager', 'auth');
+Route::get('reliver_works/{reliver_id}', [ReliverController::class, 'getReliverApiData'])->name('reliver.apiData')->middleware('auth');;
+Route::get('device/reliver/{deviceid}', [ReliverController::class, 'create'])->name('device.reliver.create')->middleware('auth');;
+Route::resource('reliver', ReliverController::class)->middleware('auth');
