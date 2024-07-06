@@ -42,8 +42,15 @@
                             <h4>{{ $product->price }}</h4>
                         </div>
                         <div class="card-bottom">
-                            {!! $product->desc !!}
-                            <a href="#" class="borders-btn">Get Started</a>
+                            @php
+                                $shortDesc = \Illuminate\Support\Str::limit($product->desc, 100);
+                            @endphp
+                            {!! $shortDesc !!}
+                            <div>
+                                <a href="{{ route('front.service.show',$product->id)}}" style="color:#9414e9 !important;cursor: pointer;">Read More</a>
+                            </div>
+                           <br />
+                            <a href="https://wa.me/+918297808410?text=Hello, Sir" class="borders-btn" target="_blank">Get Started</a>
                         </div>
                     </div>
                 </div>

@@ -42,56 +42,19 @@
                             <h4>{{ $product->price }} </h4>
                         </div>
                         <div class="card-bottom">
-                            {!! $product->desc !!}
-                            <a href="#" class="borders-btn">Get Started</a>
+                            @php
+                                $shortDesc = \Illuminate\Support\Str::limit($product->desc, 100);
+                            @endphp
+                            {!! $shortDesc !!}
+                            <div>
+                                <a href="{{ route('front.product.show',$product->id)}}" style="color:#9414e9 !important;cursor: pointer;">Read More</a>
+                            </div>
+                           <br />
+                            <a href="https://wa.me/+918297808410?text=Hello, Sir" class="borders-btn" target="_blank">Get Started</a>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                {{-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
-                    <div class="single-card text-center mb-30">
-                        <div class="card-top">
-                            <img src="{{ asset('assets/img/icon/price2.svg')}}" alt="">
-                            <h4>Dedicated Hosting</h4>
-                            <p>Starting at</p>
-                        </div>
-                        <div class="card-mid">
-                            <h4>$4.67 <span>/ month</span></h4>
-                        </div>
-                        <div class="card-bottom">
-                            <ul>
-                                <li>2 TB of space</li>
-                                <li>unlimited bandwidth</li>
-                                <li>full backup systems</li>
-                                <li>free domain</li>
-                                <li>unlimited database</li>
-                            </ul>
-                            <a href="#" class="borders-btn">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
-                    <div class="single-card text-center mb-30">
-                        <div class="card-top">
-                            <img src="{{ asset('assets/img/icon/price3.svg')}}" alt="">
-                            <h4>Cloud Hosting</h4>
-                            <p>Starting at</p>
-                        </div>
-                        <div class="card-mid">
-                            <h4>$4.67 <span>/ month</span></h4>
-                        </div>
-                        <div class="card-bottom">
-                            <ul>
-                                <li>2 TB of space</li>
-                                <li>unlimited bandwidth</li>
-                                <li>full backup systems</li>
-                                <li>free domain</li>
-                                <li>unlimited database</li>
-                            </ul>
-                            <a href="#" class="borders-btn">Get Started</a>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -168,5 +131,12 @@
     </div>
     <!-- About-2 Area End -->
 </main>
-
 @endsection
+
+{{-- @push('JS')
+    <script>
+        function readMore(url) {
+            alert(url);
+        }
+    </script>
+@endpush --}}
