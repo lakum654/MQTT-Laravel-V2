@@ -23,6 +23,7 @@ use App\Http\Controllers\Front\IndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('front.index');
 Route::get('products', [IndexController::class, 'products'])->name('front.products');
+Route::get('services', [IndexController::class, 'services'])->name('front.services');
 
 
 

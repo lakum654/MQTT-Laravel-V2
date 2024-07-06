@@ -56,8 +56,8 @@
                                 <h4>Support</h4>
                                 <ul>
                                     <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Products</a></li>
-                                    <li><a href="#">Services</a></li>
+                                    <li><a href="{{ route('front.products')}}">Products</a></li>
+                                    <li><a href="{{ route('front.services')}}">Services</a></li>
                                     <li><a href="#">Customers</a></li>
                                     <li><a href="#">Quality</a></li>
 
