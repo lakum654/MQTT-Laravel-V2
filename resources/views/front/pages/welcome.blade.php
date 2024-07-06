@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="hero__img d-none d-lg-block f-right">
-                                <img src="assets/img/hero/hero_right.png" alt=""
+                                <img src="{{ asset('assets/img/hero/hero_right.png')}}" alt=""
                                     data-animation="fadeInRight" data-delay="1s">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
         </div>
         <!-- Slider Shape -->
         <div class="slider-shape d-none d-lg-block">
-            <img class="slider-shape1" src="assets/img/hero/top-left-shape.png" alt="">
+            <img class="slider-shape1" src="{{ asset('assets/img/hero/top-left-shape.png')}}" alt="">
         </div>
     </div>
     <!-- Slider Area End -->
@@ -62,7 +62,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6"">
                     <div class="single-cat">
                         <div class="cat-icon">
-                            <img src="assets/img/icon/iiot.png" height="75px" alt="">
+                            <img src="{{ asset('assets/img/icon/iiot.png')}}" height="75px" alt="">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="#"> Industrial Internet of Things</a></h5>
@@ -74,7 +74,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single-cat">
                         <div class="cat-icon">
-                            <img src="assets/img/icon/ai.png" height="75px" alt="">
+                            <img src="{{ asset('assets/img/icon/ai.png')}}" height="75px" alt="">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="#">Artificial Intelligence</a></h5>
@@ -86,7 +86,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single-cat">
                         <div class="cat-icon">
-                            <img src="assets/img/icon/web.png" height="75px" alt="">
+                            <img src="{{ asset('assets/img/icon/web.png')}}" height="75px" alt="">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="#">Web Technologies</a></h5>
@@ -98,7 +98,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single-cat">
                         <div class="cat-icon">
-                            <img src="assets/img/icon/mob.png" height="75px" alt="">
+                            <img src="{{ asset('assets/img/icon/mob.png')}}" height="75px" alt="">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="#">Mobile Applications</a></h5>
@@ -110,7 +110,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single-cat">
                         <div class="cat-icon">
-                            <img src="assets/img/icon/industry.png" height="75px" alt="">
+                            <img src="{{ asset('assets/img/icon/industry.png')}}" height="75px" alt="">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="#">Industry 4.0</a></h5>
@@ -122,7 +122,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="single-cat">
                         <div class="cat-icon">
-                            <img src="assets/img/icon/secur.png" height="75px" alt="">
+                            <img src="{{ asset('assets/img/icon/secur.png')}}" height="75px" alt="">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="#">Secured Servers</a></h5>
@@ -145,7 +145,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
                     <!-- about-img -->
                     <div class="about-img ">
-                        <img src="assets/img/gallery/about1.png" alt="">
+                        <img src="{{ asset('assets/img/gallery/about1.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-12">
@@ -158,15 +158,15 @@
                             business / Industrial needs with maximum uptime and security.</p>
                         <ul>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
                                 <p> Unmatched Performance </p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
                                 <p>Enhanced Security</p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
                                 <p> Full Control and Customization</p>
                             </li>
                         </ul>
@@ -190,15 +190,15 @@
                             ensuring safety and peace of mind.</p>
                         <ul class="mb-30">
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
+                                <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
                                 <p>Real-Time Monitoring</p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
                                 <p>Advanced Encryption</p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
                                 <p> Seamless Integration</p>
                             </li>
 
@@ -210,7 +210,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
                     <!-- about-img -->
                     <div class="about-img ">
-                        <img src="assets/img/gallery/about2.png" alt="">
+                        <img src="{{ asset('assets/img/gallery/about2.png')}}" alt="">
                     </div>
                 </div>
             </div>

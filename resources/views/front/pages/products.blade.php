@@ -11,8 +11,10 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-xl-8 col-lg-9 col-md-12 ">
                         <div class="hero__caption hero__caption2 text-center">
-                            <h1 data-animation="fadeInLeft" data-delay=".6s ">Choose plan which fit for you</h1>
-                            <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your WordPress hosting with detailed website analytics, marketing tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress website. We're here to help you succeed!</p>
+                            <h1 data-animation="fadeInLeft" data-delay=".6s ">Choose Product which fit for you</h1>
+                            <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your industries with
+                                advanced
+                                Technologies like IIOT / AI in Industry 4.0</p>
                         </div>
                     </div>
                 </div>
@@ -37,7 +39,7 @@
                             <p>Starting at</p>
                         </div>
                         <div class="card-mid">
-                            <h4>{{ number_format($product->price,2) }} <span>/ month</span></h4>
+                            <h4>{{ $product->price }} </h4>
                         </div>
                         <div class="card-bottom">
                             {!! $product->desc !!}
