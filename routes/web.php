@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\MqttController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReliverController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,5 @@ Route::get('reliver/data', [ReliverController::class, 'getData'])->name('reliver
 Route::get('reliver_works/{reliver_id}', [ReliverController::class, 'getReliverApiData'])->name('reliver.apiData')->middleware('auth');;
 Route::get('device/reliver/{deviceid}', [ReliverController::class, 'create'])->name('device.reliver.create')->middleware('auth');;
 Route::resource('reliver', ReliverController::class)->middleware('auth');
+Route::get('products/data', [ProductController::class, 'getData'])->name('products.data')->middleware('auth');
+Route::resource('products', ProductController::class)->middleware('auth');
