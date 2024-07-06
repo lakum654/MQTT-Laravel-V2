@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\DeviceController;
-use App\Http\Controllers\Front\IndexController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MqttController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReliverController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Front\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +21,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[IndexController::class,'index'])->name('front.index');
-Route::get('products',[IndexController::class,'products'])->name('front.products');
+Route::get('/', [IndexController::class, 'index'])->name('front.index');
+Route::get('products', [IndexController::class, 'products'])->name('front.products');
 
 
 
 Auth::routes();
 Route::prefix('admin')->group(function () {
-
-
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-
     Route::get('users/data', [UserController::class, 'getData'])->name('users.data')->middleware('auth');
     Route::resource('users', UserController::class)->middleware('auth', 'role:super.admin,manager');
 
@@ -39,14 +37,16 @@ Route::prefix('admin')->group(function () {
     Route::resource('device', DeviceController::class)->middleware('role:super.admin,manager', 'auth');
 
     Route::get('reliver/delete/{id}', [ReliverController::class, 'destroy'])->name('reliver.delete')->middleware('role:super.admin,manager', 'auth');
-
     Route::get('mqtt', [MqttController::class, 'index'])->middleware('auth');
     Route::get('reliver/data', [ReliverController::class, 'getData'])->name('reliver.data')->middleware('role:super.admin,manager', 'auth');
     Route::get('reliver_works/{reliver_id}', [ReliverController::class, 'getReliverApiData'])->name('reliver.apiData')->middleware('auth');;
     Route::get('device/reliver/{deviceid}', [ReliverController::class, 'create'])->name('device.reliver.create')->middleware('auth');;
     Route::resource('reliver', ReliverController::class)->middleware('auth');
-    Route::get('products/data', [ProductController::class, 'getData'])->name('products.data')->middleware('auth');
-    Route::resource('products', ProductController::class)->middleware('auth');
+
+    Route::get('products/data', [ProductController::class, 'getData'])->name('products.data')->middleware('role:super.admin,manager', 'auth');
+    Route::resource('products', ProductController::class)->middleware('role:super.admin,manager', 'auth');
+    Route::get('service/data', [ServiceController::class, 'getData'])->name('service.data')->middleware('role:super.admin,manager', 'auth');
+    Route::resource('service', ServiceController::class)->middleware('role:super.admin,manager', 'auth');
 });
 
 // Route::group(['middleware' => ['role:super.admin,manager']], function () {

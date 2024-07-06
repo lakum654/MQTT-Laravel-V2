@@ -36,6 +36,13 @@
     @stack('CSS')
 
     <style>
+        .ck-editor__editable {
+            height: 300px;
+        }
+
+        #cke_notifications_area_desc {
+            display: none;
+        }
     </style>
 </head>
 
