@@ -33,7 +33,7 @@
                                              <li><a href="{{ route('front.products') }}"  class="{{ Route::is('front.products') ? 'text-warning' : '' }}">Products</a></li>
                                              <li><a href="{{ route('front.services')}}" class="{{ Route::is('front.services') ? 'text-warning' : '' }}">Services</a></li>
                                              <li><a target="0"
-                                                     href="https://forms.gle/4g1ZccvRa11cQUBVA">Careers</a></li>
+                                                     href="#">Careers</a></li>
 
 
                                              @if (Route::has('login'))
@@ -55,7 +55,7 @@
                                                      @if (Route::has('register'))
                                                          <!-- Button -->
                                                          <li class=" margin-left "><a href="{{ route('register') }}"
-                                                                 class="text-warning">Sign Up</a></li>
+                                                                 class="">Sign Up</a></li>
                                                      @endif
                                                      <li class="button-header"><a href="{{ route('login') }}"
                                                              class="btn">Sign In</a></li>
