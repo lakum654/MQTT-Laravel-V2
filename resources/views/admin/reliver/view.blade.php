@@ -167,17 +167,21 @@
                     <h4 class="card-title">Pressure Live </h4>
                     <div class="row">
                         <div class="col-md-3 d-flex justify-content-center">
+                            <h6>Pressure 1</h6>
                             <div id="gauge1" class="gauge"></div>
                         </div>
                         <div class="col-md-3 d-flex justify-content-center">
+                            <h6>Pressure 2</h6>
                             <div id="gauge2" class="gauge"></div>
                         </div>
 
                         <div class="col-md-3 d-flex justify-content-center">
+                            <h6>Pressure 3</h6>
                             <div id="gauge3" class="gauge"></div>
                         </div>
 
                         <div class="col-md-3 d-flex justify-content-center">
+                            <h6>Temperature</h6>
                             <div id="wrapper">
                                 <div id="termometer" style="width: 32px;">
                                     <div id="temperature" style="max-height: 100%;" data-value="0°C"></div>
@@ -266,7 +270,7 @@
                 min: 0,
                 max: 200,
                 title: "Gauge 1",
-                label: "Pressure 1",
+                label: "",
                 gaugeWidthScale: 0.6,
                 customSectors: [{
                     color: "#ff0000",
@@ -289,7 +293,7 @@
                 min: 0,
                 max: 200,
                 title: "Gauge 2",
-                label: "Pressure 2",
+                label: "",
                 gaugeWidthScale: 0.6,
                 customSectors: [{
                     color: "#ff0000",
@@ -313,7 +317,7 @@
                 min: 0,
                 max: 200,
                 title: "Gauge 3",
-                label: "Pressure 3",
+                label: "",
                 gaugeWidthScale: 0.6,
                 customSectors: [{
                     color: "#ff0000",
