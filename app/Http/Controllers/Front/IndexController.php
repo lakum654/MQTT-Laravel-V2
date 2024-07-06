@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -14,6 +15,8 @@ class IndexController extends Controller
 
     public function products()
     {
-        return view('front.pages.products');
+        $products = Product::get();
+        $data['products'] = $products;
+        return view('front.pages.products',$data);
     }
 }

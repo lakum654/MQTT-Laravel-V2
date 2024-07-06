@@ -5,138 +5,94 @@
 <main>
     <!-- Slider Area Start-->
     <div class="slider-area slider-bg ">
-        <div class="slider-active">
-            <!-- Single Slider -->
-            <div class="single-slider d-flex align-items-center slider-height ">
-                <div class="container">
-                    <div class="row align-items-center justify-content-between">
-                        <div class="col-xl-5 col-lg-5 col-md-9 ">
-                            <div class="hero__caption">
-                                <span data-animation="fadeInLeft" data-delay=".3s">Industrial Innovative
-                                    Revolution</span>
-                                <h1 data-animation="fadeInLeft" data-delay=".6s ">With Cutting Edge Technologies
-                                </h1>
-                                <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your industries with
-                                    advanced
-                                    Technologies like IIOT / AI in Industry 4.0 </p>
-                                <!-- Slider btn -->
-                                <div class="slider-btns">
-                                    <!-- Hero-btn -->
-                                    <a data-animation="fadeInLeft" data-delay="1s" href="industries.html"
-                                        class="btn radius-btn">get started</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="hero__img d-none d-lg-block f-right">
-                                <img src="assets/img/hero/hero_right.png" alt=""
-                                    data-animation="fadeInRight" data-delay="1s">
-                            </div>
+        <!-- Single Slider -->
+        <div class="single-slider d-flex align-items-center slider-height2">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-8 col-lg-9 col-md-12 ">
+                        <div class="hero__caption hero__caption2 text-center">
+                            <h1 data-animation="fadeInLeft" data-delay=".6s ">Choose plan which fit for you</h1>
+                            <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your WordPress hosting with detailed website analytics, marketing tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress website. We're here to help you succeed!</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Single Slider -->
-
         </div>
         <!-- Slider Shape -->
         <div class="slider-shape d-none d-lg-block">
-            <img class="slider-shape1" src="assets/img/hero/top-left-shape.png" alt="">
+            <img class="slider-shape1" src="{{ asset('assets/img/hero/top-left-shape.png')}}" alt="">
         </div>
     </div>
     <!-- Slider Area End -->
-    <!-- Domain-search start -->
-
-    <!-- Domain-search End -->
-    <!--? Team -->
-    <section class="team-area section-padding40 section-bg1">
+    <!--? Pricing Card Start -->
+    <section class="pricing-card-area pricing-card-area2 fix">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-12">
-                    <div class="section-tittle text-center mb-105">
-                        <h2>Our Exclusive's</h2>
-                    </div>
-                </div>
-            </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6"">
-                    <div class="single-cat">
-                        <div class="cat-icon">
-                            <img src="assets/img/icon/iiot.png" height="75px" alt="">
+                @foreach ($products as $product)
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
+                    <div class="single-card text-center mb-30">
+                        <div class="card-top">
+                            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" width="200px">
+                            <h4>{{ $product->name }}</h4>
+                            <p>Starting at</p>
                         </div>
-                        <div class="cat-cap">
-                            <h5><a href="#"> Industrial Internet of Things</a></h5>
-                            <p>Cutting-edge IoT and IIoT products that connect and optimize your devices for
-                                seamless integration and enhanced efficiency.</p>
+                        <div class="card-mid">
+                            <h4>{{ number_format($product->price,2) }} <span>/ month</span></h4>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="single-cat">
-                        <div class="cat-icon">
-                            <img src="assets/img/icon/ai.png" height="75px" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="#">Artificial Intelligence</a></h5>
-                            <p>Advanced AI solutions that drive innovation, automate processes, and deliver
-                                intelligent insights.</p>
+                        <div class="card-bottom">
+                            {!! $product->desc !!}
+                            <a href="#" class="borders-btn">Get Started</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="single-cat">
-                        <div class="cat-icon">
-                            <img src="assets/img/icon/web.png" height="75px" alt="">
+                @endforeach
+                {{-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
+                    <div class="single-card text-center mb-30">
+                        <div class="card-top">
+                            <img src="{{ asset('assets/img/icon/price2.svg')}}" alt="">
+                            <h4>Dedicated Hosting</h4>
+                            <p>Starting at</p>
                         </div>
-                        <div class="cat-cap">
-                            <h5><a href="#">Web Technologies</a></h5>
-                            <p> Robust web technologies designed to create dynamic, responsive, and user-friendly
-                                websites and applications.</p>
+                        <div class="card-mid">
+                            <h4>$4.67 <span>/ month</span></h4>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="single-cat">
-                        <div class="cat-icon">
-                            <img src="assets/img/icon/mob.png" height="75px" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="#">Mobile Applications</a></h5>
-                            <p>High-performance mobile applications tailored to provide exceptional user experiences
-                                on both Android and iOS platforms.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="single-cat">
-                        <div class="cat-icon">
-                            <img src="assets/img/icon/industry.png" height="75px" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="#">Industry 4.0</a></h5>
-                            <p>Supercharge your industries with advanced
-                                Technologies like IIOT + AI in Industry 4.0 to your Real Time Darhboards </p>
+                        <div class="card-bottom">
+                            <ul>
+                                <li>2 TB of space</li>
+                                <li>unlimited bandwidth</li>
+                                <li>full backup systems</li>
+                                <li>free domain</li>
+                                <li>unlimited database</li>
+                            </ul>
+                            <a href="#" class="borders-btn">Get Started</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="single-cat">
-                        <div class="cat-icon">
-                            <img src="assets/img/icon/secur.png" height="75px" alt="">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
+                    <div class="single-card text-center mb-30">
+                        <div class="card-top">
+                            <img src="{{ asset('assets/img/icon/price3.svg')}}" alt="">
+                            <h4>Cloud Hosting</h4>
+                            <p>Starting at</p>
                         </div>
-                        <div class="cat-cap">
-                            <h5><a href="#">Secured Servers</a></h5>
-                            <p>SuperSecured Servers with desired network LAN / WAN / MAN & Internet with advanced
-                                layers and protocals</p>
+                        <div class="card-mid">
+                            <h4>$4.67 <span>/ month</span></h4>
+                        </div>
+                        <div class="card-bottom">
+                            <ul>
+                                <li>2 TB of space</li>
+                                <li>unlimited bandwidth</li>
+                                <li>full backup systems</li>
+                                <li>free domain</li>
+                                <li>unlimited database</li>
+                            </ul>
+                            <a href="#" class="borders-btn">Get Started</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
-    <!-- Services End -->
-    <!--? Pricing Card Start -->
-
     <!-- Pricing Card End -->
     <!--? About-1 Area Start -->
     <div class="about-area1 section-padding40">
@@ -145,29 +101,28 @@
                 <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
                     <!-- about-img -->
                     <div class="about-img ">
-                        <img src="assets/img/gallery/about1.png" alt="">
+                        <img src="{{ asset('assets/img/gallery/about1.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-12">
                     <div class="about-caption ">
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle2 mb-30">
-                            <h2>Dedicated Servers</h2>
+                            <h2>Global server location</h2>
                         </div>
-                        <p class="mb-40">Reliable and high-performance dedicated servers designed to meet your
-                            business / Industrial needs with maximum uptime and security.</p>
+                        <p class="mb-40">Supercharge your WordPress hosting with detailed website analytics, marketing tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress website. We're here to help you succeed!</p>
                         <ul>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
-                                <p> Unmatched Performance </p>
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <p>WordPress hosting with detailed website</p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
-                                <p>Enhanced Security</p>
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <p>Our experts are just part of the reason</p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
-                                <p> Full Control and Customization</p>
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <p> Detailed website analytics</p>
                             </li>
                         </ul>
                     </div>
@@ -184,38 +139,32 @@
                     <div class="about-caption about-caption3 mb-50">
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle2 mb-30">
-                            <h2>Security IIoT Devices</h2>
+                            <h2>Dedicated support</h2>
                         </div>
-                        <p class="mb-40">Advanced security IoT devices that protect and monitor your assets,
-                            ensuring safety and peace of mind.</p>
+                        <p class="mb-40">Supercharge your WordPress hosting with detailed website analytics, marketing tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress website. We're here to help you succeed!</p>
                         <ul class="mb-30">
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
-                                <p>Real-Time Monitoring</p>
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <p>WordPress hosting with detailed website</p>
                             </li>
                             <li>
-                                <img src="assets/img/icon/right.svg" alt="">
-                                <p>Advanced Encryption</p>
+                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <p>Our experts are just part of the reason</p>
                             </li>
-                            <li>
-                                <img src="assets/img/icon/right.svg" alt="">
-                                <p> Seamless Integration</p>
-                            </li>
-
-
                         </ul>
-                        <!-- <a href="#" class="btn">Explore</a> -->
+                        <a href="#" class="btn"><i class="fas fa-phone-alt"></i>(10) 892-293 2678</a>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
                     <!-- about-img -->
                     <div class="about-img ">
-                        <img src="assets/img/gallery/about2.png" alt="">
+                        <img src="{{ asset('assets/img/gallery/about2.png')}}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- About-2 Area End -->
 </main>
 
 @endsection

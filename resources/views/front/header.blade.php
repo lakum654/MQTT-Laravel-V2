@@ -29,8 +29,8 @@
                                  <div class="main-menu d-none d-lg-block">
                                      <nav>
                                          <ul id="navigation">
-                                             <li><a href="{{ url('/') }}">Home</a></li>
-                                             <li><a href="{{ route('front.products') }}">Products</a></li>
+                                             <li><a href="{{ url('/') }}" class="{{ Route::is('front.index') ? 'text-warning' : '' }}">Home</a></li>
+                                             <li><a href="{{ route('front.products') }}"  class="{{ Route::is('front.products') ? 'text-warning' : '' }}">Products</a></li>
                                              <li><a href="#">Services</a></li>
                                              <li><a target="0"
                                                      href="https://forms.gle/4g1ZccvRa11cQUBVA">Careers</a></li>
@@ -38,8 +38,8 @@
 
                                              @if (Route::has('login'))
                                                  @auth
-                                                     <li class=" margin-left "><a href="{{ url('/home') }}"
-                                                             class="text-warning">DashBoard </a></li>
+                                                     <li class="margin-left "><a href="{{ url('admin/home') }}"
+                                                            class="">DashBoard </a></li>
 
                                                      <a class="" href="{{ route('logout') }}"
                                                          onclick="event.preventDefault();
