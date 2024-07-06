@@ -158,15 +158,21 @@
                             business / Industrial needs with maximum uptime and security.</p>
                         <ul>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p> Unmatched Performance </p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p>Enhanced Security</p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p> Full Control and Customization</p>
                             </li>
                         </ul>
@@ -190,15 +196,21 @@
                             ensuring safety and peace of mind.</p>
                         <ul class="mb-30">
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
+                                <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p>Real-Time Monitoring</p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                               <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                              </svg></span>
                                 <p>Advanced Encryption</p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p> Seamless Integration</p>
                             </li>
 

@@ -78,15 +78,21 @@
                         <p class="mb-40">Supercharge your WordPress hosting with detailed website analytics, marketing tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress website. We're here to help you succeed!</p>
                         <ul>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                 <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p>WordPress hosting with detailed website</p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                 <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p>Our experts are just part of the reason</p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                 <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p> Detailed website analytics</p>
                             </li>
                         </ul>
@@ -109,11 +115,15 @@
                         <p class="mb-40">Supercharge your WordPress hosting with detailed website analytics, marketing tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress website. We're here to help you succeed!</p>
                         <ul class="mb-30">
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                 <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p>WordPress hosting with detailed website</p>
                             </li>
                             <li>
-                                <img src="{{ asset('assets/img/icon/right.svg')}}" alt="">
+                                 <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
                                 <p>Our experts are just part of the reason</p>
                             </li>
                         </ul>
