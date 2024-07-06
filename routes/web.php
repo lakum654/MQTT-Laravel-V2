@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\MqttController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReliverController;
@@ -18,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/',[IndexController::class,'index'])->name('front.index');
+Route::get('products',[IndexController::class,'products'])->name('front.products');
+
+
 
 Auth::routes();
 Route::prefix('admin')->group(function () {
