@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="col-lg-12 grid-margin stretch-card">
+        <div class="col-lg-12 grid-margin">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title float-left">Users</h4>
@@ -20,9 +20,9 @@
                         <th> # </th>
                         <th> Name </th>
                         <th> Role </th>
-                        <th> Created By </th>
-                        <th> Email </th>
-                        <th> Action </th>
+                        <th width="100px"> Created By </th>
+                        <th width="100px"> Email </th>
+                        <th width="100px"> Action </th>
                       </tr>
                     </thead>
 

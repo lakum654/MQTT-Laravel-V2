@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="col-lg-12 grid-margin stretch-card">
+        <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title float-left">{{ $moduleName }}</h4>
@@ -20,12 +20,12 @@
                         <th> # </th>
                         <th> Device Name </th>
                         <th> Junction House No </th>
-                        <th> Air Blaster Count </th>
-                        <th> Compressor </th>
+                        <th width="100px"> Air Blaster Count </th>
+                        <th width="100px"> Compressor </th>
                         @if(auth()->user()->isSuperAdmin())
                         <th> QR Code </th>
                         @endif
-                        <th> Action </th>
+                        <th width="100px"> Action </th>
                       </tr>
                     </thead>
                     <tbody>

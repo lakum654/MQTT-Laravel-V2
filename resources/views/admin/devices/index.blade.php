@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="col-lg-12 grid-margin stretch-card">
+        <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title float-left">{{$moduleName}}</h4>
@@ -19,7 +19,7 @@
                       <tr>
                         <th> # </th>
                         <th> Name </th>
-                        <th> Action </th>
+                        <th width="100px"> Action </th>
                       </tr>
                     </thead>
 

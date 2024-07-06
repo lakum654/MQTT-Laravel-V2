@@ -20,7 +20,7 @@
                                 <th> Name </th>
                                 <th> Image </th>
                                 <th> Price </th>
-                                <th> Action </th>
+                                <th width="100px"> Action </th>
                             </tr>
                         </thead>
 
