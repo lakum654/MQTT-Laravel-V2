@@ -63,7 +63,7 @@
 
     <!-- About-1 Area End -->
     <!--? About-2 Area Start -->
-    <div class="about-area1 pb-bottom">
+    {{-- <div class="about-area1 pb-bottom">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-7 col-lg-7 col-md-12">
@@ -98,7 +98,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- About-2 Area End -->
 </main>
 
