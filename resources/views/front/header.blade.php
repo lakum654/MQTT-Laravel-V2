@@ -4,7 +4,7 @@
          <div class="preloader-inner position-relative ">
              <div class="preloader-circle bg-dark"></div>
              <div class="preloader-img pere-text">
-                 <img src="assets/img/logo/loder.png" alt="">
+                 <img src="{{ asset('assets/img/logo/loder.png')}}" alt="">
              </div>
          </div>
      </div>
@@ -20,7 +20,7 @@
                          <!-- Logo -->
                          <div class="col-xl-2 col-lg-2">
                              <div class="logo">
-                                 <a href="{{ url('/') }}"><img src="assets/img/logo/logo.png" alt=""></a>
+                                 <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logo/logo.png')}}" alt=""></a>
                              </div>
                          </div>
                          <div class="col-xl-10 col-lg-10">

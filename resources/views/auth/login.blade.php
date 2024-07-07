@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
 
 	<!-- CSS here -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="{{asset('assets/img/logo/loder.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -40,14 +40,14 @@
     <!-- Preloader Start-->
 
 
-<main class="login-body" data-vide-bg="assets/img/login.mp4">
+<main class="login-body" data-vide-bg="{{ asset('assets/img/login.mp4')}}">
     <!-- Login Admin -->
     <form class="form-default" action="{{ route('login') }}" method="POST">
         @csrf
         <div class="login-form">
             <!-- logo-login -->
             <div class="logo-login">
-                <a href="index.html"><img src="assets/img/logo/loder.png" alt=""></a>
+                <a href="index.html"><img src="{{ asset('assets/img/logo/loder.png')}}" alt=""></a>
             </div>
             <h2>Login Here</h2>
             <div class="form-input">

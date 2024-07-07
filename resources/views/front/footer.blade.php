@@ -1,5 +1,5 @@
 <footer>
-    <div class="footer-wrappr " data-background="assets/img/gallery/footer-bg.png">
+    <div class="footer-wrappr " data-background="{{ asset('assets/img/gallery/footer-bg.png')}}">
         <div class="footer-area footer-padding ">
             <div class="container">
                 <div class="row d-flex justify-content-between">
@@ -7,7 +7,7 @@
                         <div class="single-footer-caption mb-50">
                             <!-- logo -->
                             <div class="footer-logo mb-25">
-                                <a href="index.html"><img src="assets/img/logo/logo2_footer.png"
+                                <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png')}}"
                                         alt=""></a>
                             </div>
 
