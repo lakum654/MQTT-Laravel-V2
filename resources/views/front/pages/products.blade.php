@@ -72,13 +72,10 @@
                             @php
                                 $shortDesc = \Illuminate\Support\Str::limit($product->desc, 100);
                             @endphp
-                            <div class="short-des">
-                                {!! $shortDesc !!}
-                                @if (true)
-                                    <a href="{{ route('front.product.show',$product->id)}}" style="color:#9414e9 !important;cursor: pointer;" onclick="red">Read More</a>
-                                @endif
-                            </div>
+                            <span> {!! $shortDesc !!}</span>
+                             <a href="{{ route('front.product.show',$product->id)}}" style="color:#9414e9 !important;cursor: pointer;" onclick="red">Read More</a>
                            <br />
+                           <br>
                             <a href="https://wa.me/+918297808410?text=Hello, Sir" class="borders-btn">Get Started</a>
                         </div>
                     </div>
@@ -148,7 +145,7 @@
                                 <p>Our experts are just part of the reason</p>
                             </li>
                         </ul>
-                        <a href="#" class="btn"><i class="fas fa-phone-alt"></i>(10) 892-293 2678</a>
+                        <a href="https://wa.me/+918297808410?text=Hello, Sir" class="btn" target="_blank"><i class="fas fa-phone-alt"></i>(91) 8297808410</a>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">

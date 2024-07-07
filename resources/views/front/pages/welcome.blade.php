@@ -22,7 +22,7 @@
                                 <!-- Slider btn -->
                                 <div class="slider-btns">
                                     <!-- Hero-btn -->
-                                    <a data-animation="fadeInLeft" data-delay="1s" href="industries.html"
+                                    <a data-animation="fadeInLeft" data-delay="1s" href="{{ route('front.products')}}"
                                         class="btn radius-btn">get started</a>
                                 </div>
                             </div>

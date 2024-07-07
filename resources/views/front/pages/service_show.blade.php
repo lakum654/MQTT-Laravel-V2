@@ -114,7 +114,7 @@
                                     <p>Our experts are just part of the reason</p>
                                 </li>
                             </ul>
-                            <a href="#" class="btn"><i class="fas fa-phone-alt"></i>(10) 892-293 2678</a>
+                            <a href="https://wa.me/+918297808410?text=Hello, Sir" class="btn" target="_blank"><i class="fas fa-phone-alt"></i>(91) 8297808410</a>
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
