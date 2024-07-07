@@ -59,30 +59,35 @@
                     <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
                         <!-- about-img -->
                         <div class="about-img ">
-                            <img src="{{ asset('assets/img/gallery/about1.png') }}" alt="">
+                            <img src="{{ asset('assets/img/gallery/about1.png')}}" alt="">
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-7 col-md-12">
                         <div class="about-caption ">
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle2 mb-30">
-                                <h2>Global server location</h2>
+                                <h2>Dedicated Servers</h2>
                             </div>
-                            <p class="mb-40">Supercharge your WordPress hosting with detailed website analytics, marketing
-                                tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress
-                                website. We're here to help you succeed!</p>
+                            <p class="mb-40">Reliable and high-performance dedicated servers designed to meet your
+                                business / Industrial needs with maximum uptime and security.</p>
                             <ul>
                                 <li>
-                                    <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
-                                    <p>WordPress hosting with detailed website</p>
+                                    <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                        <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                      </svg></span>
+                                    <p> Unmatched Performance </p>
                                 </li>
                                 <li>
-                                    <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
-                                    <p>Our experts are just part of the reason</p>
+                                    <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                        <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                      </svg></span>
+                                    <p>Enhanced Security</p>
                                 </li>
                                 <li>
-                                    <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
-                                    <p> Detailed website analytics</p>
+                                    <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                        <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                      </svg></span>
+                                    <p> Full Control and Customization</p>
                                 </li>
                             </ul>
                         </div>
@@ -99,28 +104,39 @@
                         <div class="about-caption about-caption3 mb-50">
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle2 mb-30">
-                                <h2>Dedicated support</h2>
+                                <h2>Security IIoT Devices</h2>
                             </div>
-                            <p class="mb-40">Supercharge your WordPress hosting with detailed website analytics, marketing
-                                tools. Our experts are just part of the reason Bluehost is the ideal home for your WordPress
-                                website. We're here to help you succeed!</p>
+                            <p class="mb-40">Advanced security IoT devices that protect and monitor your assets,
+                                ensuring safety and peace of mind.</p>
                             <ul class="mb-30">
                                 <li>
-                                    <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
-                                    <p>WordPress hosting with detailed website</p>
+                                    <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                        <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                      </svg></span>
+                                    <p>Real-Time Monitoring</p>
                                 </li>
                                 <li>
-                                    <img src="{{ asset('assets/img/icon/right.svg') }}" alt="">
-                                    <p>Our experts are just part of the reason</p>
+                                   <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                    <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                  </svg></span>
+                                    <p>Advanced Encryption</p>
                                 </li>
+                                <li>
+                                    <span class="mr-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                        <text id="right" transform="translate(0 14)" fill="#11e276" font-size="16" font-family="FontAwesome5Free-Solid, 'Font Awesome 5 Free'"><tspan x="0" y="0"></tspan></text>
+                                      </svg></span>
+                                    <p> Seamless Integration</p>
+                                </li>
+
+
                             </ul>
-                            <a href="https://wa.me/+918297808410?text=Hello, Sir" class="btn" target="_blank"><i class="fas fa-phone-alt"></i>(91) 8297808410</a>
+                            <!-- <a href="#" class="btn">Explore</a> -->
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10">
                         <!-- about-img -->
                         <div class="about-img ">
-                            <img src="{{ asset('assets/img/gallery/about2.png') }}" alt="">
+                            <img src="{{ asset('assets/img/gallery/about2.png')}}" alt="">
                         </div>
                     </div>
                 </div>
