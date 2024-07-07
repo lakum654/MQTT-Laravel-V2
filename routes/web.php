@@ -41,7 +41,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('reliver/delete/{id}', [ReliverController::class, 'destroy'])->name('reliver.delete')->middleware('role:super.admin,manager', 'auth');
     Route::get('mqtt', [MqttController::class, 'index'])->middleware('auth');
-    Route::get('reliver/data', [ReliverController::class, 'getData'])->name('reliver.data')->middleware('role:super.admin,manager', 'auth');
+    Route::get('reliver/data', [ReliverController::class, 'getData'])->name('reliver.data')->middleware('auth');
     Route::get('reliver_works/{reliver_id}', [ReliverController::class, 'getReliverApiData'])->name('reliver.apiData')->middleware('auth');;
     Route::get('device/reliver/{deviceid}', [ReliverController::class, 'create'])->name('device.reliver.create')->middleware('auth');;
     Route::resource('reliver', ReliverController::class)->middleware('auth');

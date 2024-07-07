@@ -118,7 +118,7 @@ class UserController extends Controller
         ]);
         $user->roles()->sync([$request->role_id]);
 
-        if(auth()->user()->role_id == 2 && $request->role_id == 3) {
+        if(auth()->user()->role_id == 2) {
             $oldEmpIds = auth()->user()->employees()->pluck('user_id')->toArray();
             $merged = array_merge([$user->id],$oldEmpIds);
             auth()->user()->employees()->sync($merged);

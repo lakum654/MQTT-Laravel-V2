@@ -72,7 +72,7 @@ class User extends Authenticatable
     // For Emmployee & General Users
     public function employees()
     {
-        return $this->belongsToMany(User::class, 'manager_employee', 'manager_id', 'user_id')->where('role_id', 3);
+        return $this->belongsToMany(User::class, 'manager_employee', 'manager_id', 'user_id')->whereIn('role_id', [3,4]);
     }
 
     public function relivers()
