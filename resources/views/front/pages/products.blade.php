@@ -29,7 +29,7 @@
     <!--? Pricing Card Start -->
     <section class="pricing-card-area pricing-card-area2 fix">
         <div class="container">
-            <div class="row">
+            {{-- <div class="row">
                 @foreach ($products as $product)
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
                     <div class="single-card text-center mb-30">
@@ -51,6 +51,35 @@
                             </div>
                            <br />
                             <a href="https://wa.me/+918297808410?text=Hello, Sir" class="borders-btn" target="_blank">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div> --}}
+            <div class="row">
+                @foreach ($products as $product)
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
+                    <div class="single-card text-center mb-30">
+                        <div class="card-top">
+                            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" width="200px">
+                            <h4>{{ $product->name }}</h4>
+                            <p>Starting at</p>
+                        </div>
+                        <div class="card-mid">
+                            <h4>{{ $product->price }} </h4>
+                        </div>
+                        <div class="card-bottom">
+                            @php
+                                $shortDesc = \Illuminate\Support\Str::limit($product->desc, 100);
+                            @endphp
+                            <div class="short-des">
+                                {!! $shortDesc !!}
+                                @if (true)
+                                    <a href="{{ route('front.product.show',$product->id)}}" style="color:#9414e9 !important;cursor: pointer;" onclick="red">Read More</a>
+                                @endif
+                            </div>
+                           <br />
+                            <a href="https://wa.me/+918297808410?text=Hello, Sir" class="borders-btn">Get Started</a>
                         </div>
                     </div>
                 </div>
