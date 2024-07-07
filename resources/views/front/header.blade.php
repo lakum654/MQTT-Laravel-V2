@@ -30,8 +30,8 @@
                                      <nav>
                                          <ul id="navigation">
                                              <li><a href="{{ url('/') }}" class="{{ Route::is('front.index') ? 'text-warning' : '' }}">Home</a></li>
-                                             <li><a href="{{ route('front.products') }}"  class="{{ Route::is('front.products') ? 'text-warning' : '' }}">Products</a></li>
-                                             <li><a href="{{ route('front.services')}}" class="{{ Route::is('front.services') ? 'text-warning' : '' }}">Services</a></li>
+                                             {{-- <li><a href="{{ route('front.products') }}"  class="{{ Route::is('front.products') || Route::is('front.product.show') ? 'text-warning' : '' }}">Products</a></li>
+                                             <li><a href="{{ route('front.services')}}" class="{{ Route::is('front.services') || Route::is('front.services.show') ? 'text-warning' : '' }}">Services</a></li> --}}
                                              <li><a target="_blank"
                                                      href="https://forms.gle/4g1ZccvRa11cQUBVA">Careers</a></li>
 

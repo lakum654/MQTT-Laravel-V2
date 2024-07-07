@@ -26,6 +26,8 @@ Route::get('products', [IndexController::class, 'products'])->name('front.produc
 Route::get('product/{id}', [IndexController::class, 'productShow'])->name('front.product.show');
 Route::get('service/{id}', [IndexController::class, 'serviceShow'])->name('front.service.show');
 Route::get('services', [IndexController::class, 'services'])->name('front.services');
+Route::get('why-choose-us', [IndexController::class, 'whyChooseUs'])->name('front.why-choose-us');
+
 
 
 

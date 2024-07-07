@@ -41,4 +41,8 @@ class IndexController extends Controller
         $data['product'] = $service;
         return view('front.pages.service_show',$data);
     }
+
+    public function whyChooseUs() {
+        return view('front.pages.why_choose_us');
+    }
 }

@@ -7,7 +7,7 @@
                         <div class="single-footer-caption mb-50">
                             <!-- logo -->
                             <div class="footer-logo mb-25">
-                                <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png')}}"
+                                <a href="/"><img src="{{ asset('assets/img/logo/logo2_footer.png')}}"
                                         alt=""></a>
                             </div>
 
@@ -25,7 +25,7 @@
                             <div class="footer-tittle">
                                 <h4>Company</h4>
                                 <ul>
-                                    <li><a href="#">Why choose us</a></li>
+                                    <li><a href="{{ route('front.why-choose-us') }}" class="{{Route::is('front.why-choose-us') ? 'text-warning' : ''}}">Why choose us</a></li>
                                     <li><a target="1" href="https://g.page/r/CfGOtJbUmc5CEB0/review">
                                             Review</a></li>
                                     <li><a href="#">Customers</a></li>
@@ -56,8 +56,8 @@
                                 <h4>Support</h4>
                                 <ul>
                                     <li><a href="#">Technology</a></li>
-                                    <li><a href="{{ route('front.products')}}">Products</a></li>
-                                    <li><a href="{{ route('front.services')}}">Services</a></li>
+                                    {{-- <li><a href="{{ route('front.products')}}" class="{{Route::is('front.products') || Route::is('front.product.show') ? 'text-warning' : ''}}">Products</a></li>
+                                    <li><a href="{{ route('front.services')}}" class="{{Route::is('front.services') || Route::is('front.services.show') ? 'text-warning' : ''}}">Services</a></li> --}}
                                     <li><a href="#">Customers</a></li>
                                     <li><a href="#">Quality</a></li>
 
