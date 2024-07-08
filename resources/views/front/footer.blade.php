@@ -56,8 +56,8 @@
                                 <h4>Support</h4>
                                 <ul>
                                     <li><a href="#">Technology</a></li>
-                                    {{-- <li><a href="{{ route('front.products')}}" class="{{Route::is('front.products') || Route::is('front.product.show') ? 'text-warning' : ''}}">Products</a></li>
-                                    <li><a href="{{ route('front.services')}}" class="{{Route::is('front.services') || Route::is('front.services.show') ? 'text-warning' : ''}}">Services</a></li> --}}
+                                    <li><a href="{{ route('front.products')}}" class="{{Route::is('front.products') || Route::is('front.product.show') ? 'text-warning' : ''}}">Products</a></li>
+                                    <li><a href="{{ route('front.services')}}" class="{{Route::is('front.services') || Route::is('front.services.show') ? 'text-warning' : ''}}">Services</a></li>
                                     <li><a href="#">Customers</a></li>
                                     <li><a href="#">Quality</a></li>
 

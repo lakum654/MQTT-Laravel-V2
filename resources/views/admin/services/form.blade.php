@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="number" class="form-control" id="price" placeholder="Price" name="price" value="{{ old('price') }}">
+                                <input type="number" class="form-control" id="price" placeholder="Price" name="price" value="{{ old('price',0) }}">
                                 @error('price')
                                     <label class="error text-danger">{{ $message }}</label>
                                 @enderror
