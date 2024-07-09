@@ -63,11 +63,11 @@
                         <div class="card-top">
                             <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" width="200px">
                             <h4>{{ $product->name }}</h4>
-                            <p>Starting at</p>
+                            {{-- <p>Starting at</p> --}}
                         </div>
-                        <div class="card-mid">
+                        {{-- <div class="card-mid">
                             <h4>{{ $product->price }} </h4>
-                        </div>
+                        </div> --}}
                         <div class="card-bottom">
                             @php
                                 $shortDesc = \Illuminate\Support\Str::limit($product->desc, 100);

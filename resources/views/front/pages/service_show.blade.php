@@ -36,11 +36,11 @@
                                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                     width="400px">
                                 <h4>{{ $product->name }}</h4>
-                                <p>Starting at</p>
+                                {{-- <p>Starting at</p> --}}
                             </div>
-                            <div class="card-mid">
+                            {{-- <div class="card-mid">
                                 <h4>{{ $product->price }} </h4>
-                            </div>
+                            </div> --}}
                             <div class="card-bottom">
                                 {!! $product->desc !!}
                                 <br />
