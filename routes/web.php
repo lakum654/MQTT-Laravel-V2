@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MqttController;
 use App\Http\Controllers\UserController;
@@ -52,6 +53,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('products', ProductController::class)->middleware('role:super.admin,manager', 'auth');
     Route::get('service/data', [ServiceController::class, 'getData'])->name('service.data')->middleware('role:super.admin,manager', 'auth');
     Route::resource('service', ServiceController::class)->middleware('role:super.admin,manager', 'auth');
+    Route::get('client/data', [ClientController::class, 'getData'])->name('client.data')->middleware('role:super.admin,manager', 'auth');
+    Route::resource('client', ClientController::class)->middleware('role:super.admin,manager', 'auth');
 });
 
 // Route::group(['middleware' => ['role:super.admin,manager']], function () {

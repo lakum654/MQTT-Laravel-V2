@@ -111,7 +111,7 @@
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{ route('products.index') }}">
                     <span class="menu-icon">
-                        <i class="mdi mdi-laptop"></i>
+                        <i class="mdi mdi-cart-outline"></i>
                     </span>
                     <span class="menu-title">Products</span>
                 </a>
@@ -120,9 +120,18 @@
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{ route('service.index') }}">
                     <span class="menu-icon">
-                        <i class="mdi mdi-laptop"></i>
+                        <i class="mdi mdi-airplay"></i>
                     </span>
                     <span class="menu-title">Service</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ route('client.index') }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                    </span>
+                    <span class="menu-title">Client</span>
                 </a>
             </li>
         @endif
