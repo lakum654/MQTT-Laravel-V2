@@ -152,6 +152,15 @@
                     <span class="menu-title">Blogs</span>
                 </a>
             </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ route('gallery.index') }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                    </span>
+                    <span class="menu-title">Gallery</span>
+                </a>
+            </li>
         @endif
         {{-- <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

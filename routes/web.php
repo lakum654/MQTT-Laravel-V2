@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReliverController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,8 +67,12 @@ Route::prefix('admin')->group(function () {
     Route::get('blogs/data', [BlogController::class, 'getData'])->name('blog.data');
     Route::resource('blog', BlogController::class)->middleware('role:super.admin','auth');
 
+    Route::get('categories-data', [CategoryController::class, 'getData'])->name('categories.data');
     Route::resource('categories', CategoryController::class)->middleware('role:super.admin','auth');
-Route::get('categories-data', [CategoryController::class, 'getData'])->name('categories.data');
+
+    Route::get('gallery/data', [GalleryController::class, 'getData'])->name('gallery.data');
+    Route::resource('gallery', GalleryController::class)->middleware('role:super.admin','auth');
+
 });
 
 // Route::group(['middleware' => ['role:super.admin,manager']], function () {
