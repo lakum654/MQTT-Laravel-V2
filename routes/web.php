@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MqttController;
@@ -28,6 +30,8 @@ Route::get('product/{id}', [IndexController::class, 'productShow'])->name('front
 Route::get('service/{id}', [IndexController::class, 'serviceShow'])->name('front.service.show');
 Route::get('services', [IndexController::class, 'services'])->name('front.services');
 Route::get('why-choose-us', [IndexController::class, 'whyChooseUs'])->name('front.why-choose-us');
+Route::get('blog', [IndexController::class, 'blog'])->name('front.blog');
+
 
 
 
@@ -50,11 +54,17 @@ Route::prefix('admin')->group(function () {
     Route::resource('reliver', ReliverController::class)->middleware('auth');
 
     Route::get('products/data', [ProductController::class, 'getData'])->name('products.data')->middleware('role:super.admin,manager', 'auth');
-    Route::resource('products', ProductController::class)->middleware('role:super.admin,manager', 'auth');
+    Route::resource('products', ProductController::class)->middleware('role:super.admin', 'auth');
     Route::get('service/data', [ServiceController::class, 'getData'])->name('service.data')->middleware('role:super.admin,manager', 'auth');
-    Route::resource('service', ServiceController::class)->middleware('role:super.admin,manager', 'auth');
+    Route::resource('service', ServiceController::class)->middleware('role:super.admin', 'auth');
     Route::get('client/data', [ClientController::class, 'getData'])->name('client.data')->middleware('role:super.admin,manager', 'auth');
-    Route::resource('client', ClientController::class)->middleware('role:super.admin,manager', 'auth');
+    Route::resource('client', ClientController::class)->middleware('role:super.admin', 'auth');
+
+    Route::get('blogs/data', [BlogController::class, 'getData'])->name('blog.data');
+    Route::resource('blog', BlogController::class)->middleware('role:super.admin','auth');
+
+    Route::resource('categories', CategoryController::class)->middleware('role:super.admin','auth');
+Route::get('categories-data', [CategoryController::class, 'getData'])->name('categories.data');
 });
 
 // Route::group(['middleware' => ['role:super.admin,manager']], function () {

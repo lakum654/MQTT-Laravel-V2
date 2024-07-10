@@ -47,4 +47,8 @@ class IndexController extends Controller
     public function whyChooseUs() {
         return view('front.pages.why_choose_us');
     }
+
+    public function blog() {
+        return view('front.pages.blog');
+    }
 }

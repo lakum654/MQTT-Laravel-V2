@@ -134,6 +134,24 @@
                     <span class="menu-title">Client</span>
                 </a>
             </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ route('categories.index') }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                    </span>
+                    <span class="menu-title">Blog Category</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ route('blog.index') }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                    </span>
+                    <span class="menu-title">Blogs</span>
+                </a>
+            </li>
         @endif
         {{-- <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
