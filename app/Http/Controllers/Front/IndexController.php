@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Service;
@@ -49,6 +51,26 @@ class IndexController extends Controller
     }
 
     public function blog() {
-        return view('front.pages.blog');
+        $data['blogs'] = Blog::with('category')->paginate(5);
+        $data['categories'] = Category::get();
+        $data['recent_blogs'] = Blog::orderBy('id','desc')->limit(5)->get();
+        $data['is_active_category'] = "";
+        return view('front.pages.blog',$data);
+    }
+
+    public function blogShow($slug) {
+        $data['blog'] = Blog::where('slug',$slug)->first();
+        $data['categories'] = Category::get();
+        $data['recent_blogs'] = Blog::orderBy('id','desc')->limit(5)->get();
+        return view('front.pages.blog_show',$data);
+    }
+
+    public function blogCategory($category)
+    {
+        $data['blogs'] = Blog::where('category_id',$category)->paginate(5);
+        $data['categories'] = Category::get();
+        $data['is_active_category'] = Category::find($category)->id;
+        $data['recent_blogs'] = Blog::orderBy('id','desc')->limit(5)->get();
+        return view('front.pages.blog',$data);
     }
 }

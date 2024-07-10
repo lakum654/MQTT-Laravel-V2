@@ -31,6 +31,9 @@ Route::get('service/{id}', [IndexController::class, 'serviceShow'])->name('front
 Route::get('services', [IndexController::class, 'services'])->name('front.services');
 Route::get('why-choose-us', [IndexController::class, 'whyChooseUs'])->name('front.why-choose-us');
 Route::get('blog', [IndexController::class, 'blog'])->name('front.blog');
+Route::get('blog/{slug}', [IndexController::class, 'blogShow'])->name('front.blog.show');
+Route::get('blog/{category}/category', [IndexController::class, 'blogCategory'])->name('front.blog.category');
+
 
 
 
