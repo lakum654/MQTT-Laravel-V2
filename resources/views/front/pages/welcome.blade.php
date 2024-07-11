@@ -360,8 +360,8 @@
             <div class="row gallery-item">
                 @foreach ($galleries as $key => $gallery)
                 <div class="col-md-4">
-                    <a href="assets/img/elements/g1.jpg" class="img-pop-up">
-                        <div class="single-gallery-image" style="background: url(assets/img/elements/g1.jpg);"></div>
+                    <a href="{{ asset('storage/'.$gallery->image)}}" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url({{ asset('storage/'.$gallery->image)}});"></div>
                     </a>
                 </div>
                 @endforeach
