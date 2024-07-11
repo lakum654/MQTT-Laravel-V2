@@ -29,7 +29,7 @@
                                     <li><a target="1" href="https://g.page/r/CfGOtJbUmc5CEB0/review">
                                             Review</a></li>
                                     <li><a href="#">Customers</a></li>
-                                    <li><a href="{{ route('front.blog')}}">Blog</a></li>
+                                    <li><a href="{{ route('front.blog')}}" class="{{Route::is('front.blog') || Route::is('front.blog.*') ? 'text-warning' : ''}}">Blog</a></li>
                                     <li><a target="0" href="https://forms.gle/4g1ZccvRa11cQUBVA">Careers</a>
                                     </li>
                                 </ul>
