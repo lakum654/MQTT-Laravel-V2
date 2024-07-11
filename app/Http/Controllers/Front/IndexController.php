@@ -63,7 +63,7 @@ class IndexController extends Controller
     public function blogShow($slug) {
         $data['blog'] = Blog::where('slug',$slug)->first();
         $data['categories'] = Category::get();
-        $data['recent_blogs'] = Blog::orderBy('id','desc')->limit(5)->get();
+        $data['recent_blogs'] = Blog::where('id','!=',$data['blog']->id)->orderBy('id','desc')->limit(5)->get();
         return view('front.pages.blog_show',$data);
     }
 
