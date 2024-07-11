@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class IndexController extends Controller
     public function index()
     {
         $data['clients'] = Client::get();
+        $data['galleries'] = Gallery::get();
         return view('front.pages.welcome',$data);
     }
 

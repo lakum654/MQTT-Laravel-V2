@@ -352,6 +352,58 @@
             </div>
         </div>
 
+        <div class="about-area1 pb-bottom">
+            <div class="container">
+                <div class="section-tittle section-tittle2 mb-30">
+                    <h2 class="text-center">Image Gallery</h2>
+                </div>
+            <div class="row gallery-item">
+                @foreach ($galleries as $key => $gallery)
+                <div class="col-md-4">
+                    <a href="assets/img/elements/g1.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g1.jpg);"></div>
+                    </a>
+                </div>
+                @endforeach
+                {{-- <div class="col-md-4">
+                    <a href="assets/img/elements/g2.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g2.jpg);"></div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="assets/img/elements/g3.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g3.jpg);"></div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="assets/img/elements/g4.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g4.jpg);"></div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="assets/img/elements/g5.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g5.jpg);"></div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="assets/img/elements/g6.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g6.jpg);"></div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="assets/img/elements/g7.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g7.jpg);"></div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="assets/img/elements/g8.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(assets/img/elements/g8.jpg);"></div>
+                    </a>
+                </div> --}}
+            </div>
+            </div>
+        </div>
+
         <div class="section-tittle section-tittle2 mb-30">
             <h2 class="text-center">Clients</h2>
         </div>
