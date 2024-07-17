@@ -9,24 +9,17 @@
 @endpush
 @section('content')
 <main>
+    {{-- <br /> <br /> <br /> --}}
     <!-- Slider Area Start-->
-    <div class="slider-area slider-bg ">
+    <div class="slider-area slider-bg">
         <!-- Single Slider -->
         <div class="single-slider d-flex align-items-center slider-height2">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-8 col-lg-9 col-md-12 ">
-                        <div class="hero__caption hero__caption2 text-center">
-                            <h1 data-animation="fadeInLeft" data-delay=".6s ">Why Choose Us ?</h1>
-                            {{-- <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your industries with
-                                advanced
-                                Technologies like IIOT / AI in Industry 4.0</p> --}}
-                        </div>
-                    </div>
-                </div>
+            <div class="container mt-5">
+
 
                 <div class="about-area1 section-padding40">
-                    <div class="container">
+                    <div class="container text-center">
+                        <h1 class="text-white mb-5">Why Choose Us ?</h1>
                         <div class="row align-items-center justify-content-between">
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="about-caption" style="color: white;">
