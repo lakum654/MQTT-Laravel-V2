@@ -26,6 +26,8 @@ class RoleMiddleware
         // dd($user->role);
 
         // Check if the user has any of the required roles
+
+        // dd($user->hasRole($roles));
         if ($user->hasRole($roles)) {
             return $next($request);
         }

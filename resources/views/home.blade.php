@@ -62,7 +62,9 @@
             </div>
         </div>
 
+
         <div class="row">
+            @if(auth()->user()->hasRole(['super.admin','manager']))
             <a href="{{route('users.index')}}" class="col-sm-4 grid-margin nav-link text-white">
                 <div class="card">
                     <div class="card-body">
@@ -82,6 +84,7 @@
                     </div>
                 </div>
             </a>
+            @endif
             <div class="col-sm-4 grid-margin">
                 <div class="card">
                     <div class="card-body">
@@ -122,6 +125,7 @@
             </div>
         </div>
 
+
         <div class="row">
             @if(auth()->user()->hasRole(['super.admin']))
             <a href="{{route('device.index')}}" class="col-sm-4 grid-margin nav-link text-white">
@@ -144,6 +148,8 @@
                 </div>
             </a>
             @endif
+
+            @if(auth()->user()->hasRole(['super.admin','manager']))
             <a href="{{route('reliver.index')}}" class="col-sm-4 grid-margin nav-link text-white">
                 <div class="card">
                     <div class="card-body">
@@ -163,8 +169,8 @@
                     </div>
                 </div>
             </a>
-
-            @if(auth()->user()->hasRole(['super.admin']))
+            @endif
+            @if(auth()->user()->hasRole(['super.admin','manager']))
             <a href="{{route('users.index')}}" class="col-sm-4 grid-margin nav-link text-white">
                     <div class="card">
                         <div class="card-body">

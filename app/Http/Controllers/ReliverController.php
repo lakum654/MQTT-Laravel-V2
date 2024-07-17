@@ -22,6 +22,10 @@ class ReliverController extends Controller
 
     public function index()
     {
+
+        if(in_array(auth()->user()->role_id,[3,4])) {
+            return abort(403);
+        }
         return view($this->data['view'] . 'index', $this->data);
     }
 
@@ -43,17 +47,22 @@ class ReliverController extends Controller
                 $viewUrl = route('reliver.show', encrypt($reliver->id));
                 $actions = '';
 
+                $actions .= "<a href='".$viewUrl."' class='btn btn-success btn-xs mr-1'><i class='fas fa-pencil-alt'></i> View</a>";
                 if(auth()->user()->hasRole(['super.admin','manegar'])) {
                     $actions .= "<a href='".$editUrl."' class='btn btn-warning btn-xs'><i class='fas fa-pencil-alt'></i> Edit</a>";
                 }
                 if(auth()->user()->hasRole(['super.admin'])) {
                     $actions .= "<a href='".$deleteUrl."' class='btn btn-danger btn-xs ml-1'><i class='fas fa-pencil-alt'></i> Delete</a>";
                 }
-                $actions .= "<a href='".$viewUrl."' class='btn btn-success btn-xs ml-1'><i class='fas fa-pencil-alt'></i> View</a>";
 
                 return $actions;
             })
-            ->rawColumns(['action'])
+
+            ->addColumn('device.name',function($row) {
+                $viewUrl = route('reliver.show', encrypt($row->id));
+                return "<a href='".$viewUrl."'>{$row->device->name}</a>";
+            })
+            ->rawColumns(['action','device.name'])
             ->addIndexColumn()
             ->make(true);
     }
