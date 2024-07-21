@@ -73,7 +73,7 @@
         @endphp
 
         @if ($user->hasRole(['super.admin', 'manegar', 'employee']))
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("users.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-account-multiple-outline"></i>
@@ -84,7 +84,7 @@
         @endif
 
         @if ($user->hasRole(['super.admin']))
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("device.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('device.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-disqus-outline"></i>
@@ -97,7 +97,7 @@
 
 
         @if ($user->hasRole(['super.admin', 'manegar', 'employee', 'user']))
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("reliver.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('reliver.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-discord"></i>
@@ -108,7 +108,7 @@
         @endif
 
         @if ($user->hasRole(['super.admin']))
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("products.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('products.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-cart-outline"></i>
@@ -117,7 +117,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("service.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('service.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-airplay"></i>
@@ -126,7 +126,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("client.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('client.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-account-multiple-outline"></i>
@@ -135,7 +135,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("categories.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('categories.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-account-multiple-outline"></i>
@@ -144,7 +144,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("blog.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('blog.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-account-multiple-outline"></i>
@@ -153,7 +153,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Route::is("gallery.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('gallery.index') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-account-multiple-outline"></i>
