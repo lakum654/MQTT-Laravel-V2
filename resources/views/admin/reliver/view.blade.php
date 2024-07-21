@@ -403,15 +403,15 @@
                 let temprature = parseFloat($('#Temperature').text());
                 setTemperature(temprature)
                 // alert(pressure1,pressure2)
-                if(pressure1 > 50) {
+                if(topic == "{{ $reliver->qrcode }}/Pressure1" && pressure1 > 50) {
                     sendNotification('The Pressure 1 Level is Greater Then 50');
                 }
 
-                if(pressure2 > 50) {
+                if(topic == "{{ $reliver->qrcode }}/Pressure2" && pressure2 > 50) {
                     sendNotification('The Pressure 2 Level is Greater Then 50');
                 }
 
-                if(pressure3 > 50) {
+                if(topic == "{{ $reliver->qrcode }}/Pressure3" && pressure3 > 50) {
                     sendNotification('The Pressure 3 Level is Greater Then 50');
                 }
                 g1.refresh(pressure1);

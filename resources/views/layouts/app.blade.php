@@ -36,7 +36,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 
-    @livewireStyles
+    {{-- @livewireStyles --}}
 
     @stack('CSS')
 
@@ -134,7 +134,7 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -230,7 +230,7 @@
             // Enable pusher logging - don't include this in production
             Pusher.logToConsole = true;
 
-            var pusher = new Pusher('391e0b29360b9f418920', {
+            var pusher = new Pusher("{{env('PUSHER_APP_KEY')}}", {
                 cluster: 'mt1',
                 forceTLS: true
             });
