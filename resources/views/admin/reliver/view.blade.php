@@ -224,6 +224,20 @@
 
     <script>
         $(document).ready(function() {
+
+            function sendNotification(message) {
+                $.ajax({
+                    url: "{{route('reliver.send-notification')}}",
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        message: message
+                    },
+                    success: function (response) {
+                        console.log(response.status);
+                    }
+                });
+            }
             const units = {
                 Celcius: "°C",
                 Fahrenheit: "°F"
@@ -389,6 +403,17 @@
                 let temprature = parseFloat($('#Temperature').text());
                 setTemperature(temprature)
                 // alert(pressure1,pressure2)
+                if(pressure1 > 50) {
+                    sendNotification('The Pressure 1 Level is Greater Then 50');
+                }
+
+                if(pressure2 > 50) {
+                    sendNotification('The Pressure 2 Level is Greater Then 50');
+                }
+
+                if(pressure3 > 50) {
+                    sendNotification('The Pressure 3 Level is Greater Then 50');
+                }
                 g1.refresh(pressure1);
                 g2.refresh(pressure2);
                 g3.refresh(pressure3);

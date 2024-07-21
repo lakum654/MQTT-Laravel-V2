@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MQTTEvent;
 use App\Models\Reliver;
 use App\Models\ReliverWork;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class ReliverController extends Controller
     public function index()
     {
 
-        if(in_array(auth()->user()->role_id,[3,4])) {
+        if (in_array(auth()->user()->role_id, [3, 4])) {
             return abort(403);
         }
         return view($this->data['view'] . 'index', $this->data);
@@ -33,36 +34,44 @@ class ReliverController extends Controller
     {
 
         $relivers = Reliver::with('device');
-        if(auth()->user()->hasRole(['manegar'])) {
-            $relivers = Reliver::with('device')->where('created_by',auth()->user()->id);
-        }else if(auth()->user()->hasRole(['employee','user'])) {
+        if (auth()->user()->hasRole(['manegar'])) {
+            $relivers = Reliver::with('device')->where('created_by', auth()->user()->id);
+        } else if (auth()->user()->hasRole(['employee', 'user'])) {
             $userAssinedReliverIds = auth()->user()->relivers->pluck('id')->toArray();
-            $relivers = Reliver::with('device')->whereIn('id',$userAssinedReliverIds);
+            $relivers = Reliver::with('device')->whereIn('id', $userAssinedReliverIds);
         }
 
         return DataTables::eloquent($relivers)
-            ->addColumn('action', function($reliver) {
+            ->addColumn('action', function ($reliver) {
                 $editUrl = route('reliver.edit', encrypt($reliver->id));
                 $deleteUrl = route('reliver.delete', encrypt($reliver->id));
+                $settingUrl = route('reliver.setting', encrypt($reliver->id));
                 $viewUrl = route('reliver.show', encrypt($reliver->id));
                 $actions = '';
 
-                $actions .= "<a href='".$viewUrl."' class='btn btn-success btn-xs mr-1'><i class='fas fa-pencil-alt'></i> View</a>";
-                if(auth()->user()->hasRole(['super.admin','manegar'])) {
-                    $actions .= "<a href='".$editUrl."' class='btn btn-warning btn-xs'><i class='fas fa-pencil-alt'></i> Edit</a>";
+                $actions = "<a href='" . $viewUrl . "' class='btn btn-success btn-xs mr-1'><i class='fas fa-eye'></i></a>";
+
+                if (auth()->user()->hasRole(['super.admin', 'manegar'])) {
+                    $actions .= "<a href='" . $editUrl . "' class='btn btn-warning btn-xs'><i class='fas fa-edit'></i></a>";
                 }
-                if(auth()->user()->hasRole(['super.admin'])) {
-                    $actions .= "<a href='".$deleteUrl."' class='btn btn-danger btn-xs ml-1'><i class='fas fa-pencil-alt'></i> Delete</a>";
+
+                if (auth()->user()->hasRole(['super.admin'])) {
+                    $actions .= "<a href='" . $deleteUrl . "' class='btn btn-danger btn-xs m-1'><i class='fas fa-trash-alt'></i></a>";
                 }
+
+                if (auth()->user()->hasRole(['super.admin']) || auth()->user()->hasRole(['manegar'])) {
+                    $actions .= "<a href='" . $settingUrl . "' class='btn btn-info btn-xs m-1'><i class='fas fa-cog'></i></a>";
+                }
+
 
                 return $actions;
             })
 
-            ->addColumn('device.name',function($row) {
+            ->addColumn('device.name', function ($row) {
                 $viewUrl = route('reliver.show', encrypt($row->id));
-                return "<a href='".$viewUrl."'>{$row->device->name}</a>";
+                return "<a href='" . $viewUrl . "'>{$row->device->name}</a>";
             })
-            ->rawColumns(['action','device.name'])
+            ->rawColumns(['action', 'device.name'])
             ->addIndexColumn()
             ->make(true);
     }
@@ -105,15 +114,16 @@ class ReliverController extends Controller
 
     public function show($id)
     {
-        $this->data['reliver_data'] = ReliverWork::where('reliver_id',decrypt($id))->get();
+        $this->data['reliver_data'] = ReliverWork::where('reliver_id', decrypt($id))->get();
         $this->data['reliver'] = Reliver::find(decrypt($id));
         // dd($this->data);
-        return view($this->data['view'].'view',$this->data);
+        return view($this->data['view'] . 'view', $this->data);
     }
 
-    public function getReliverApiData($id) {
+    public function getReliverApiData($id)
+    {
         // dd($id);
-        $data = ReliverWork::with('reliver')->where('reliver_id',$id);
+        $data = ReliverWork::with('reliver')->where('reliver_id', $id);
         return DataTables::eloquent($data)
             ->addIndexColumn()
             ->make(true);
@@ -155,5 +165,18 @@ class ReliverController extends Controller
         $reliver->delete();
 
         return redirect(route($this->data['routeName']))->with('message', 'Reliver deleted successfully!');
+    }
+
+    public function sendNotification(Request $request)
+    {
+        event(new MQTTEvent($request->message));
+        return response()->json(['status' => 'Event triggered']);
+    }
+
+    public function setting($id)
+    {
+        $this->data['reliver'] = Reliver::find(decrypt($id));
+        // dd($this->data);
+        return view($this->data['view'] . 'setting  ', $this->data);
     }
 }

@@ -40,8 +40,8 @@ class ProductController extends Controller
 
                 $actions = '';
 
-                $actions .= "<a href='" . $editUrl . "' class='btn btn-warning  btn-xs mr-2'><i class='fas fa-pencil-alt'></i> Edit</a>";
-                $actions .= "<a href='" . $deleteUrl . "' class='btn btn-danger  btn-xs'><i class='fas fa-pencil-alt'></i> Delete</a>";
+                $actions .= "<a href='" . $editUrl . "' class='btn btn-warning btn-xs mr-1'><i class='fas fa-pencil-alt'></i></a>";
+                $actions .= "<a href='" . $deleteUrl . "' class='btn btn-danger btn-xs mr-1'><i class='fas fa-trash-alt'></i></a>";
 
                 return $actions;
             })

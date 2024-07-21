@@ -10,6 +10,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- plugins:css -->
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     --}}
+    <link rel="stylesheet" href="{{ asset('vendors/toast/toastr.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -23,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/owl-carousel-2/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -42,6 +47,10 @@
 
         #cke_notifications_area_desc {
             display: none;
+        }
+
+        .toast {
+            background-color: green !important;
         }
     </style>
 </head>
@@ -159,6 +168,8 @@
     <script src="{{ asset('js/misc.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>
     <script src="{{ asset('js/todolist.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
     <!-- endinject -->
     <!-- Custom js for this page -->
@@ -171,6 +182,118 @@
             $(".select2").select2({});
             $("input[type=search]").addClass('form-control form-control-sm');
             // $("input[type=search]").setAttribute('placeholder','Search...');
+        });
+    </script>
+
+
+    {{-- <script>
+   $(document).ready(function() {
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('391e0b29360b9f418920', {
+        cluster: 'mt1',
+        forceTLS: true
+    });
+
+    var channel = pusher.subscribe('mqtt-event');
+
+    channel.bind('mqtt-event', function(data) {
+        // Show Toastr notification with an image
+        var messageWithImage = '<img src="{{ asset("images/faces/face3.jpg")}}" alt="Image" style="width: 20px; height: 20px; margin-right: 10px;">' + data.message;
+        toastr.success(messageWithImage, 'Notification');
+    });
+
+    // Toastr configuration (optional)
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+});
+</script> --}}
+
+    <script>
+        $(document).ready(function() {
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('391e0b29360b9f418920', {
+                cluster: 'mt1',
+                forceTLS: true
+            });
+
+            var channel = pusher.subscribe('mqtt-event');
+
+            channel.bind('mqtt-event', function(data) {
+                // Show Toastr notification with an image
+                //  var messageWithImage = '<img src="{{ asset('images/faces/face3.jpg') }}" alt="Image" style="width: 20px; height: 20px; margin-right: 10px;">' + data.message;
+                toastr.success(data.message, 'Notification');
+
+                // Check if the browser supports notifications
+                if (!('Notification' in window)) {
+                    alert('This browser does not support desktop notifications');
+                    return;
+                }
+
+                // Check the current Notification permission
+                if (Notification.permission === 'granted') {
+                    // If permission is granted, send a notification
+                    sendNotification(data);
+                } else if (Notification.permission !== 'denied') {
+                    // If permission is not denied, request permission
+                    Notification.requestPermission().then(function(permission) {
+                        if (permission === 'granted') {
+                            sendNotification(data);
+                        }
+                    });
+                }
+            });
+
+
+            function sendNotification(data) {
+                var options = {
+                    body: data.message,
+                    icon: 'https://fastly.picsum.photos/id/3/5000/3333.jpg?hmac=GDjZ2uNWE3V59PkdDaOzTOuV3tPWWxJSf4fNcxu4S2g' // Optional icon
+                };
+                var notification = new Notification('Notification', options);
+
+                notification.onclick = function(event) {
+                    event.preventDefault(); // Prevent the browser from focusing the Notification's tab
+                    window.open('https://nighatechglobal.com/',
+                    '_blank'); // Open a URL when the notification is clicked
+                };
+            }
+            // Toastr configuration (optional)
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
         });
     </script>
 </body>

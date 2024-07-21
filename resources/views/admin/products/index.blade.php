@@ -20,7 +20,7 @@
                                 <th> Name </th>
                                 <th> Image </th>
                                 <th> Price </th>
-                                <th> QR Code </th>
+                                {{-- <th> QR Code </th> --}}
                                 <th width="100px"> Action </th>
                             </tr>
                         </thead>
@@ -72,10 +72,10 @@
                     data: 'price',
                     name: 'price'
                 },
-                {
-                    data: 'qrcode',
-                    name: 'qrcode'
-                },
+                // {
+                //     data: 'qrcode',
+                //     name: 'qrcode'
+                // },
                 {
                     data: 'action',
                     orderable: false,
