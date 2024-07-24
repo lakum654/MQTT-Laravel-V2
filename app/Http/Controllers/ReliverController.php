@@ -24,7 +24,7 @@ class ReliverController extends Controller
     public function index()
     {
 
-        if (in_array(auth()->user()->role_id, [3, 4])) {
+        if (in_array(auth()->user()->role_id, [4])) {
             return abort(403);
         }
         return view($this->data['view'] . 'index', $this->data);

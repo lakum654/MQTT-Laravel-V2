@@ -72,7 +72,7 @@
             $user = auth()->user();
         @endphp
 
-        @if ($user->hasRole(['super.admin', 'manegar', 'employee']))
+        @if ($user->hasRole(['super.admin', 'manegar']))
             <li class="nav-item menu-items {{ Route::is("users.*") ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <span class="menu-icon">
