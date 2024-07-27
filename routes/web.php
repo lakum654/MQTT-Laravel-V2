@@ -52,9 +52,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('devices/data', [DeviceController::class, 'getData'])->name('device.data');
         Route::resource('device', DeviceController::class);
 
-        Route::get('reliver/setting/{id}', [ReliverController::class, 'setting'])->name('reliver.setting');
-        Route::post('reliver/setting', [ReliverController::class, 'setting'])->name('reliver.setting.update');
-        Route::get('reliver/delete/{id}', [ReliverController::class, 'destroy'])->name('reliver.delete');
+
 
         Route::get('products/data', [ProductController::class, 'getData'])->name('products.data');
         Route::resource('products', ProductController::class);
@@ -73,6 +71,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
         Route::get('gallery/data', [GalleryController::class, 'getData'])->name('gallery.data');
         Route::resource('gallery', GalleryController::class);
+
+        Route::get('reliver/setting/{id}', [ReliverController::class, 'setting'])->name('reliver.setting');
+        Route::post('reliver/update-setting', [ReliverController::class, 'updateSetting'])->name('reliver.setting.update');
+        Route::get('reliver/delete/{id}', [ReliverController::class, 'destroy'])->name('reliver.delete');
     });
 
     Route::get('mqtt', [MqttController::class, 'index']);

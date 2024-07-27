@@ -222,7 +222,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.3.4/justgage.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
 
             function sendNotification(message) {
@@ -512,7 +512,316 @@
                 myChart.update();
             }
         });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            function sendNotification(message) {
+                if({{$reliver?->setting?->is_on}} == 1){
+                    $.ajax({
+                        url: "{{ route('reliver.send-notification') }}",
+                        method: 'POST',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            message: message
+                        },
+                        success: function(response) {
+                            console.log(response.status);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Notification error:", error);
+                        }
+                    });
+                } else {
+                    console.log('Notifcation is Off')
+                }
+            }
+
+            const units = {
+                Celcius: "°C",
+                Fahrenheit: "°F"
+            };
+
+            const config = {
+                minTemp: -0,
+                maxTemp: 60,
+                unit: "Celcius",
+                currentTemp: 42 // Initial temperature value
+            };
+
+            // Change temperature manually
+            $("#temperature").on("click", function() {
+                config.currentTemp = (config.currentTemp + 1) % (config.maxTemp + 1);
+                setTemperature(config.currentTemp);
+            });
+
+            // Switch unit of temperature manually
+            $("#temperature").on("contextmenu", function(e) {
+                e.preventDefault();
+                config.unit = config.unit === "Celcius" ? "Fahrenheit" : "Celcius";
+                setTemperature(config.currentTemp);
+            });
+
+            function setTemperature(value) {
+                let height = (value - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
+                $("#temperature").attr("data-value", value + units[config.unit]);
+                if (height > 60) {
+                    height = 60;
+                }
+                $("#temperature").css("height", height);
+            }
+
+            var g1 = new JustGage({
+                id: "gauge1",
+                value: 0,
+                min: 0,
+                max: 200,
+                title: "Gauge 1",
+                label: "",
+                gaugeWidthScale: 0.6,
+                customSectors: [{
+                    color: "#ff0000",
+                    lo: 0,
+                    hi: 30
+                }, {
+                    color: "#00ff00",
+                    lo: 30,
+                    hi: 70
+                }, {
+                    color: "#0000ff",
+                    lo: 70,
+                    hi: 100
+                }]
+            });
+
+            var g2 = new JustGage({
+                id: "gauge2",
+                value: 0,
+                min: 0,
+                max: 200,
+                title: "Gauge 2",
+                label: "",
+                gaugeWidthScale: 0.6,
+                customSectors: [{
+                    color: "#ff0000",
+                    lo: 0,
+                    hi: 30
+                }, {
+                    color: "#00ff00",
+                    lo: 30,
+                    hi: 70
+                }, {
+                    color: "#0000ff",
+                    lo: 70,
+                    hi: 100
+                }]
+            });
+
+            var g3 = new JustGage({
+                id: "gauge3",
+                value: 0,
+                min: 0,
+                max: 200,
+                title: "Gauge 3",
+                label: "",
+                gaugeWidthScale: 0.6,
+                customSectors: [{
+                    color: "#ff0000",
+                    lo: 0,
+                    hi: 30
+                }, {
+                    color: "#00ff00",
+                    lo: 30,
+                    hi: 70
+                }, {
+                    color: "#0000ff",
+                    lo: 70,
+                    hi: 100
+                }]
+            });
+
+            const clientId = `{{ env('MQTT_CLIENT_ID') }}`;
+            const host = `wss://{{ env('MQTT_HOST') }}:{{ env('MQTT_PORT') }}/mqtt`;
+            const options = {
+                clientId: clientId,
+                username: `{{ env('MQTT_AUTH_USERNAME') }}`,
+                password: `{{ env('MQTT_AUTH_PASSWORD') }}`,
+                keepalive: 60,
+                protocolId: 'MQTT',
+                protocolVersion: 4,
+                clean: true,
+                reconnectPeriod: 1000,
+                connectTimeout: 30 * 1000,
+                will: {
+                    topic: 'Book',
+                    payload: 'Connection Closed abnormally..!',
+                    qos: 0,
+                    retain: false
+                }
+            };
+
+            console.log('Connecting mqtt client');
+            const client = mqtt.connect(host, options);
+
+            client.on('error', (err) => {
+                console.log('Connection error: ', err);
+                client.end();
+            });
+
+            client.on('reconnect', () => {
+                console.log('Reconnecting...');
+            });
+
+            client.on('connect', () => {
+                console.log('Connected to MQTT broker');
+
+                // Subscribe to all topics found in the table
+                $('.mqttBody td').each(function() {
+                    const topic = $(this).data('topic');
+                    if (topic) {
+                        subscribe(topic);
+                    }
+                });
+            });
+
+            client.on('message', (topic, message) => {
+                console.log(`Received message: ${message.toString()} on topic: ${topic}`);
+
+                updateChartData(topic, parseFloat(message.toString()));
+                updateTableCell(topic, message.toString());
+
+                let pressure1 = parseFloat($('#Pressure1').text());
+                let pressure2 = parseFloat($('#Pressure2').text());
+                let pressure3 = parseFloat($('#Pressure3').text());
+                let temperature = parseFloat($('#Temperature').text());
+
+                if (topic === "{{ $reliver->qrcode }}/Temperature" && temperature > {{ $reliver->setting->temperature ?? 0 }}) {
+                    sendNotification('The Temperature Level is Greater Than the Threshold');
+                }
+
+                setTemperature(temperature);
+
+                if (topic === "{{ $reliver->qrcode }}/Temperature" && temperature > {{ $reliver->setting->temperature ?? 0 }}) {
+                    sendNotification('The Temperature Level is Greater Than the Threshold');
+                }
+
+                // Check conditions and send notifications
+                if (topic === "{{ $reliver->qrcode }}/Pressure1" && pressure1 > {{ $reliver->setting->pressure1 ?? 0 }}) {
+                    sendNotification('The Pressure 1 Level is Greater Than the Threshold');
+                }
+
+                if (topic === "{{ $reliver->qrcode }}/Pressure2" && pressure2 > {{ $reliver->setting->pressure2 ?? 0 }}) {
+                    sendNotification('The Pressure 2 Level is Greater Than the Threshold');
+                }
+
+                if (topic === "{{ $reliver->qrcode }}/Pressure3" && pressure3 > {{ $reliver->setting->pressure3 ?? 0 }}) {
+                    sendNotification('The Pressure 3 Level is Greater Than the Threshold');
+                }
+
+                g1.refresh(pressure1);
+                g2.refresh(pressure2);
+                g3.refresh(pressure3);
+            });
+
+            function publish(topic, message) {
+                subscribe(topic);
+                client.publish(topic, message, (err) => {
+                    if (err) {
+                        console.log('Publish error: ', err);
+                    } else {
+                        console.log(`Message: ${message} published to topic: ${topic}`);
+                    }
+                });
+            }
+
+            function subscribe(topic) {
+                client.subscribe(topic, (err) => {
+                    if (err) {
+                        console.log('Subscribe error: ', err);
+                    } else {
+                        console.log(`Subscribed to topic: ${topic}`);
+                    }
+                });
+            }
+
+            function updateTableCell(topic, message) {
+                $(`td[data-topic="${topic}"]`).text(message);
+            }
+
+            const ctx = $('#myChart')[0].getContext('2d');
+
+            // Create gradient for the datasets
+            const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient1.addColorStop(0, 'rgba(255, 99, 132, 0.2)');
+            gradient1.addColorStop(1, 'rgba(255, 99, 132, 0)');
+
+            const gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient2.addColorStop(0, 'rgba(75, 192, 192, 0.2)');
+            gradient2.addColorStop(1, 'rgba(75, 192, 192, 0)');
+
+            const labels = [];
+            for (let i = 1; i <= 60; i++) {
+                labels.push(`${i} sec`);
+            }
+
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                            label: 'Radar 1',
+                            data: [],
+                            backgroundColor: gradient1,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            fill: true,
+                            tension: 0.4, // Rounded lines
+                        },
+                        {
+                            label: 'Radar 2',
+                            data: [],
+                            backgroundColor: gradient2,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            fill: true,
+                            tension: 0.4, // Rounded lines
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            function updateChartData(topic, value) {
+                if (topic === '{{ $reliver->qrcode }}/Radar1') {
+                    if(value > {{ $reliver->setting->radar1 ?? 0 }}) {
+                        sendNotification('The Radar 1 Level is Greater Than the Threshold');
+                    }
+
+                    myChart.data.datasets[0].data.push(value);
+                    if (myChart.data.datasets[0].data.length > labels.length) {
+                        myChart.data.datasets[0].data.shift();
+                    }
+                } else if (topic === '{{ $reliver->qrcode }}/Radar2') {
+                    if(value > {{ $reliver->setting->radar2 ?? 0 }}) {
+                        sendNotification('The Radar 2 Level is Greater Than the Threshold');
+                    }
+
+                    myChart.data.datasets[1].data.push(value);
+                    if (myChart.data.datasets[1].data.length > labels.length) {
+                        myChart.data.datasets[1].data.shift();
+                    }
+                }
+                myChart.update();
+            }
+        });
     </script>
+
 
     @include('admin.reliver.datatable-js')
 @endpush

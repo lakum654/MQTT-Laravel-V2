@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\MQTTEvent;
+use App\Models\NotificationSetting;
 use App\Models\Reliver;
 use App\Models\ReliverWork;
 use Illuminate\Http\Request;
@@ -99,7 +100,7 @@ class ReliverController extends Controller
 
         $validatedData = $request->validate($rules, $messages);
 
-        Reliver::create([
+        $reliverId = Reliver::create([
             'junction_house_no' => $validatedData['junction_house_no'],
             'air_blaster_count' => $validatedData['air_blaster_count'],
             'compressor' => $validatedData['compressor'],
@@ -108,6 +109,24 @@ class ReliverController extends Controller
             'map' => $request->map,
             'created_by' => auth()->user()->id
         ]);
+
+        // Set Default Notifaction Value
+        NotificationSetting::updateOrCreate(
+            ['reliver_id' => $reliverId],
+            [
+                'pressure1' => 60,
+                'pressure2' => 60,
+                'pressure3' => 60,
+                'radar1' => 60,
+                'radar2' => 60,
+                'blasterA1' => 60,
+                'blasterB1' => 60,
+                'blasterC2' => 60,
+                'blasterD2' => 60,
+                'temperature' => 60,
+                'is_on' => 1
+            ]
+        );
 
         return redirect(route($this->data['routeName']))->with('success', 'Reliver created successfully.');
     }
@@ -176,7 +195,54 @@ class ReliverController extends Controller
     public function setting($id)
     {
         $this->data['reliver'] = Reliver::find(decrypt($id));
-        // dd($this->data);
+
+        // dd($this->data['reliver']['setting']);
         return view($this->data['view'] . 'setting  ', $this->data);
+    }
+
+    public function updateSetting(Request $request) {
+
+
+        // dd(Reliver::find($request->id)->setting);
+        // dd($request->all());
+        // Validate the request data
+        $request->validate([
+            'junction_house_no' => 'nullable|string|max:255',
+            'pressure1' => 'nullable|numeric',
+            'pressure2' => 'nullable|numeric',
+            'pressure3' => 'nullable|numeric',
+            'radar1' => 'nullable|numeric',
+            'radar2' => 'nullable|numeric',
+            'blasterA1' => 'nullable|numeric',
+            'blasterB1' => 'nullable|numeric',
+            'blasterC2' => 'nullable|numeric',
+            'blasterD2' => 'nullable|numeric',
+            'temperature' => 'nullable|numeric',
+            'is_on' => 'nullable|boolean',
+        ]);
+
+        // Encrypt the reliver ID for use in the redirect
+        $reliverId = $request->input('reliver_id');
+
+        // Update or create the notification setting
+        NotificationSetting::updateOrCreate(
+            ['reliver_id' => $reliverId],
+            [
+                'pressure1' => $request->input('pressure1'),
+                'pressure2' => $request->input('pressure2'),
+                'pressure3' => $request->input('pressure3'),
+                'radar1' => $request->input('radar1'),
+                'radar2' => $request->input('radar2'),
+                'blasterA1' => $request->input('blasterA1'),
+                'blasterB1' => $request->input('blasterB1'),
+                'blasterC2' => $request->input('blasterC2'),
+                'blasterD2' => $request->input('blasterD2'),
+                'temperature' => $request->input('temperature'),
+                'is_on' => $request->has('is_on') ? 1 : 0
+            ]
+        );
+
+        // Redirect back with success message
+        return back();
     }
 }

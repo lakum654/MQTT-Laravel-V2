@@ -18,4 +18,8 @@ class Reliver extends Model
     {
         return $this->belongsToMany(User::class,'reliver_user','reliver_id','user_id');
     }
+
+    public function setting() {
+        return $this->hasOne(NotificationSetting::class, 'reliver_id', 'id');
+    }
 }
