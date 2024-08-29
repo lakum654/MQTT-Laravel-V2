@@ -86,7 +86,7 @@ class DeviceController extends Controller
         // Example: Create a new user
         $user = Device::create([
             'name' => $validatedData['name'],
-            'qrcode' => $request->qrcode,
+            'qrcode' => str_pad(rand(0, 9999999999999999), 16, '0', STR_PAD_LEFT),
             'created_by' => auth()->user()->id
         ]);
 
@@ -126,25 +126,25 @@ class DeviceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-{
-    // Validate the incoming request data
-    $request->validate([
-        'name' => 'required|string|max:255'
-    ]);
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
 
-    // Find the user by ID
-    $device = Device::findOrFail($id);
+        // Find the user by ID
+        $device = Device::findOrFail($id);
 
-    // Update user fields
-    $device->name = $request->input('name');
-    $device->qrcode = $request->input('qrcode');
+        // Update user fields
+        $device->name = $request->input('name');
+        $device->qrcode = str_pad(rand(0, 9999999999999999), 16, '0', STR_PAD_LEFT);
 
-    // Save the updated user
-    $device->save();
+        // Save the updated user
+        $device->save();
 
-    // Redirect back with a success message
-    return redirect(route($this->data['routeName']))->with('message', 'Device updated successfully!');
-}
+        // Redirect back with a success message
+        return redirect(route($this->data['routeName']))->with('message', 'Device updated successfully!');
+    }
 
 
     /**

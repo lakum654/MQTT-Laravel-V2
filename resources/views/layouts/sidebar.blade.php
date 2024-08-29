@@ -81,6 +81,15 @@
                     <span class="menu-title">Users</span>
                 </a>
             </li>
+
+            <li class="nav-item menu-items {{ Route::is("gps-device.*") ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('gps-device.index') }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-disqus-outline"></i>
+                    </span>
+                    <span class="menu-title">GPS Devices</span>
+                </a>
+            </li>
         @endif
 
         @if ($user->hasRole(['super.admin']))

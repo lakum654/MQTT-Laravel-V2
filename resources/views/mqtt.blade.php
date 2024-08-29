@@ -145,7 +145,7 @@
         });
 
 
-        $('.toggle-switch').on('change', function() {
+    $('.toggle-switch').on('change', function() {
     const switchInput = $(this);
     const deviceId = switchInput.data('id');
     const currentStatus = switchInput.data('status');

@@ -12,7 +12,9 @@ use App\Http\Controllers\ReliverController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GPSDeviceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrackingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,7 @@ Route::get('blog/{category}/category', [IndexController::class, 'blogCategory'])
 
 Auth::routes();
 Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('track-device/{qrcode}/{id}', [TrackingController::class, 'startTracking'])->name('track-device')->middleware('auth');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::middleware(['role:super.admin,manegar'])->group(function () {
@@ -52,7 +55,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('devices/data', [DeviceController::class, 'getData'])->name('device.data');
         Route::resource('device', DeviceController::class);
 
-
+        Route::get('gps-devices/data', [GPSDeviceController::class, 'getData'])->name('gps-device.data');
+        Route::resource('gps-device', GPSDeviceController::class);
 
         Route::get('products/data', [ProductController::class, 'getData'])->name('products.data');
         Route::resource('products', ProductController::class);

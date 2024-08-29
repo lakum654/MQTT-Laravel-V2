@@ -183,6 +183,13 @@
             $("input[type=search]").addClass('form-control form-control-sm');
             // $("input[type=search]").setAttribute('placeholder','Search...');
         });
+
+
+        $('body').on('click', '.track-btn', function() {
+    var href = $(this).data('href');  // Get the URL from the data-href attribute
+    window.location.href = href;       // Redirect to the URL
+});
+
     </script>
 
 

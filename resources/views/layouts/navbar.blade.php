@@ -106,15 +106,17 @@
             <a class="dropdown-item preview-item">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-calendar text-success"></i>
+                  <i class="mdi mdi-map text-success"></i>
                 </div>
               </div>
-              <div class="preview-item-content">
-                <p class="preview-subject mb-1">Event today</p>
-                <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
+              @foreach (App\Models\GPSDevice::where('emails','LIKE','%'.auth()->user()->email.'%')->get() as $device)
+              <div class="preview-item-content track-btn" data-href={{ route('track-device',['qrcode' => $device->qrcode,'id' => encrypt(55)])}}>
+                <p class="track-btn preview-subject mb-1" data-href={{ route('track-device',['qrcode' => $device->qrcode,'id' => encrypt(55)])}}>{{$device->name}}</p>
+                <p class="track-btn text-muted ellipsis mb-0" data-href={{ route('track-device',['qrcode' => $device->qrcode,'id' => encrypt(55)])}}>Track Now </p>
               </div>
+              @endforeach
             </a>
-            <div class="dropdown-divider"></div>
+            {{-- <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
@@ -140,7 +142,7 @@
             </a>
             <div class="dropdown-divider"></div>
             <p class="p-3 mb-0 text-center">See all notifications</p>
-          </div>
+          </div> --}}
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
