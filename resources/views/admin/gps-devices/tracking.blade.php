@@ -76,16 +76,16 @@
     client.on('message', (topic, message) => {
         console.log('Received message:', topic, message.toString());
 
-        if (topic === 'latlong') {
+        if (topic === '{{$device->qrcode}}/latlong') {
             const [lat, long] = message.toString().split(',').map(parseFloat);
             if (!isNaN(lat) && !isNaN(long)) {
                 currentLat = lat;
                 currentLong = long;
                 updateMap(currentLat, currentLong);
             }
-        } else if (topic === 'lat') {
+        } else if (topic === '{{$device->qrcode}}/lat') {
             currentLat = parseFloat(message.toString());
-        } else if (topic === 'long') {
+        } else if (topic === '{{$device->qrcode}}/long') {
             currentLong = parseFloat(message.toString());
         }
 
